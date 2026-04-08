@@ -9,7 +9,7 @@ import Sponsors from "@/components/sections/sponsors";
 import FAQ from "@/components/sections/faq";
 import RegisterCTA from "@/components/sections/register-cta";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdscanu.com.au";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdganu.com";
 
 export const metadata: Metadata = {
   alternates: {

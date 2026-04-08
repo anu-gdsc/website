@@ -7,7 +7,7 @@ import SectionTitle from "@/components/ui/section-title";
 import PageHero from "@/components/layout/page-hero";
 import FAQAccordion from "@/components/sections/faq-accordion";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdscanu.com.au";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdganu.com";
 
 export const metadata: Metadata = {
   title: "FAQ",

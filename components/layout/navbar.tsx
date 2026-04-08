@@ -90,7 +90,9 @@ export default function Navbar() {
                     ))}
 
                     <a
-                        href="/register"
+                        href="https://campus.hellorubric.com/?s=9746"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         onClick={() => setIsOpen(false)}
                         className="mt-4 rounded-full bg-white px-5 py-3 text-center text-sm font-semibold text-black"
                     >

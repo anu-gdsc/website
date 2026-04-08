@@ -12,11 +12,11 @@ const faqs = [
     },
     {
         q: "Will there be workshops?",
-        a: "Yes. You can include practical workshops, interactive demos, and project-focused sessions.",
+        a: "Yes. The event includes hands-on workshops alongside speaker sessions — practical and beginner-friendly.",
     },
     {
         q: "How do I register?",
-        a: "You can connect the Register button to your preferred form or ticketing platform.",
+        a: "Registration is open via Hellorubric. Click the Register Now button to secure your spot.",
     },
 ];
 

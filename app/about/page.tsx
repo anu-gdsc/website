@@ -1,5 +1,38 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, CalendarDays, MapPin, Users, Lightbulb, Sparkles } from "lucide-react";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdscanu.com.au";
+
+export const metadata: Metadata = {
+  title: "About",
+  description:
+    "Learn about GDSC ANU 2026 — a student-led developer event at the Australian National University featuring talks, workshops, and community sessions across AI, cloud, web, and product.",
+  alternates: {
+    canonical: `${siteUrl}/about`,
+  },
+  openGraph: {
+    title: "About | GDSC ANU 2026",
+    description:
+      "A student-led developer event at ANU Canberra, October 2026. Talks, workshops, networking, and community moments across AI, cloud, web, and product.",
+    url: `${siteUrl}/about`,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "About GDSC ANU 2026",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "About | GDSC ANU 2026",
+    description:
+      "A student-led developer event at ANU Canberra, October 2026 — talks, workshops, and community sessions.",
+    images: ["/og-image.png"],
+  },
+};
 
 import Container from "@/components/ui/container";
 import SectionTitle from "@/components/ui/section-title";

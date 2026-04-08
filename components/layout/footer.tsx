@@ -20,7 +20,7 @@ export default function Footer() {
                             target="_blank" rel="noopener noreferrer" className="hover:text-white">
                             LinkedIn
                         </a>
-                        <a href="#" className="hover:text-white">
+                        <a href="https://www.instagram.com/gdg_anu/" target="_blank" rel="noopener noreferrer" className="hover:text-white">
                             Contact
                         </a>
                     </div>

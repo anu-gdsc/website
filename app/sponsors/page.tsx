@@ -1,13 +1,43 @@
-import Link from "next/link";
+import type { Metadata } from "next";
 import {
   ArrowRight,
   BadgeCheck,
   BriefcaseBusiness,
-  Building2,
   Handshake,
   Megaphone,
-  Sparkles,
 } from "lucide-react";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdscanu.com.au";
+
+export const metadata: Metadata = {
+  title: "Sponsors & Partners",
+  description:
+    "Meet the sponsors and partners backing GDSC ANU 2026. Partner with us to connect with student developers and the tech community at ANU Canberra, October 2026.",
+  alternates: {
+    canonical: `${siteUrl}/sponsors`,
+  },
+  openGraph: {
+    title: "Sponsors & Partners | GDSC ANU 2026",
+    description:
+      "The sponsors and partners powering GDSC ANU 2026. Connect with student developers and the tech community at ANU Canberra.",
+    url: `${siteUrl}/sponsors`,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "GDSC ANU 2026 Sponsors & Partners",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sponsors & Partners | GDSC ANU 2026",
+    description:
+      "Partners backing GDSC ANU 2026 — connect with student developers at ANU Canberra, October 2026.",
+    images: ["/og-image.png"],
+  },
+};
 
 import Container from "@/components/ui/container";
 import SectionTitle from "@/components/ui/section-title";
@@ -158,10 +188,10 @@ export default function SponsorsPage() {
               </ul>
 
               <div className="mt-8 rounded-2xl border border-white/10 bg-black/40 p-5">
-                <p className="text-sm font-medium text-white">Sponsorship note</p>
+                <p className="text-sm font-medium text-white">Interested in partnering?</p>
                 <p className="mt-2 text-sm leading-7 text-white/65">
-                  You can later connect this page to a partner deck, sponsorship brochure, or
-                  contact workflow for outreach.
+                  Reach out via Instagram or the GDG community page to start a conversation about
+                  sponsorship and partnership opportunities.
                 </p>
               </div>
             </div>
@@ -281,19 +311,23 @@ export default function SponsorsPage() {
               </p>
 
               <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  href="/contact"
+                <a
+                  href="https://www.instagram.com/gdg_anu/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition hover:opacity-90"
                 >
-                  Contact Organisers
+                  Contact on Instagram
                   <ArrowRight className="h-4 w-4" />
-                </Link>
+                </a>
 
                 <a
-                  href="#"
+                  href="https://gdg.community.dev/gdg-on-campus-the-australian-national-university-canberra-australia/"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/5"
                 >
-                  Download Partner Deck
+                  GDG Community Page
                 </a>
               </div>
             </div>

@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import {
   ArrowRight,
@@ -6,7 +7,6 @@ import {
   Clock3,
   ExternalLink,
   MapPin,
-  Sparkles,
   Ticket,
   Users,
 } from "lucide-react";
@@ -14,6 +14,38 @@ import {
 import Container from "@/components/ui/container";
 import SectionTitle from "@/components/ui/section-title";
 import PageHero from "@/components/layout/page-hero";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdscanu.com.au";
+
+export const metadata: Metadata = {
+  title: "Register",
+  description:
+    "Register for GDSC ANU 2026 — a flagship student developer event at ANU Canberra, October 2026. Secure your spot for talks, workshops, and networking across AI, cloud, web, and product.",
+  alternates: {
+    canonical: `${siteUrl}/register`,
+  },
+  openGraph: {
+    title: "Register | GDSC ANU 2026",
+    description:
+      "Secure your spot at GDSC ANU 2026 — talks, workshops, and networking across AI, cloud, web, and product. ANU Canberra, October 2026.",
+    url: `${siteUrl}/register`,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "GDSC ANU 2026 Register",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Register | GDSC ANU 2026",
+    description:
+      "Register for GDSC ANU 2026 and secure your spot at ANU Canberra, October 2026.",
+    images: ["/og-image.png"],
+  },
+};
 
 const eventDetails = [
   {
@@ -49,7 +81,7 @@ const steps = [
   {
     title: "Complete the registration form",
     description:
-      "Link this page to your preferred Google Form, Luma page, ticketing page, or chapter sign-up workflow.",
+      "Head to the Hellorubric registration form, fill in your details, and confirm your attendance with a few quick questions.",
   },
   {
     title: "Watch for confirmation and updates",
@@ -72,7 +104,7 @@ const miniFaqs = [
   },
   {
     q: "Is this only for ANU students?",
-    a: "You can adjust this based on final event policy, but the site can be framed primarily around the ANU student community.",
+    a: "The event is primarily organised for ANU students, but all Canberra-based students and tech enthusiasts are welcome to attend.",
   },
   {
     q: "Will there be workshops as well as talks?",
@@ -80,7 +112,7 @@ const miniFaqs = [
   },
   {
     q: "Where will registration happen?",
-    a: "Connect the CTA on this page to your preferred external form, ticketing page, or event platform.",
+    a: "Registration is open on the Hellorubric platform. Click the Register Now button on this page to get started.",
   },
 ];
 
@@ -100,7 +132,7 @@ export default function RegisterPage() {
               <SectionTitle
                 eyebrow="Registration overview"
                 title="A simple, clear path to joining the event"
-                description="This page should feel like the decision page. It should remove hesitation, clarify value, and make registration easy."
+                description="Everything you need to know before signing up — event details, what to expect, and a straightforward registration process."
               />
 
               <div className="mt-8 space-y-5 text-sm leading-7 text-white/70 md:text-base">
@@ -122,7 +154,9 @@ export default function RegisterPage() {
 
               <div className="mt-8 flex flex-wrap gap-4">
                 <a
-                  href="#"
+                  href="https://campus.hellorubric.com/?s=9746"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition hover:opacity-90"
                 >
                   Register Now
@@ -161,10 +195,10 @@ export default function RegisterPage() {
               </div>
 
               <div className="mt-8 rounded-2xl border border-white/10 bg-black/40 p-5">
-                <p className="text-sm font-medium text-white">Registration note</p>
+                <p className="text-sm font-medium text-white">Registration is open</p>
                 <p className="mt-2 text-sm leading-7 text-white/65">
-                  Replace the CTA link with your final registration form, event ticketing platform,
-                  or chapter registration flow when ready.
+                  Register via Hellorubric to secure your spot. Spots are limited — sign up early
+                  to avoid missing out.
                 </p>
               </div>
             </div>
@@ -177,7 +211,7 @@ export default function RegisterPage() {
           <SectionTitle
             eyebrow="Why register"
             title="What attendees get from the experience"
-            description="A strong registration page should reinforce value quickly and clearly."
+            description="A day designed to be genuinely useful — practical sessions, real connections, and ideas you can act on."
           />
 
           <div className="mt-12 grid gap-6 md:grid-cols-2">
@@ -308,7 +342,9 @@ export default function RegisterPage() {
 
               <div className="mt-8 flex flex-wrap gap-4">
                 <a
-                  href="#"
+                  href="https://campus.hellorubric.com/?s=9746"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition hover:opacity-90"
                 >
                   Register Now

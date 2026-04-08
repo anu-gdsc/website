@@ -13,6 +13,6 @@ export const faqs = [
   },
   {
     q: "How do I register?",
-    a: "You can connect the Register button to your preferred form or ticketing platform.",
+    a: "Registration is open via Hellorubric. Click the Register Now button on the site to secure your spot.",
   },
 ];

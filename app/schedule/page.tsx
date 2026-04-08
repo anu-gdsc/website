@@ -1,5 +1,38 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, CalendarDays, Clock3, MapPin, Mic, Users } from "lucide-react";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdscanu.com.au";
+
+export const metadata: Metadata = {
+  title: "Schedule",
+  description:
+    "Explore the GDSC ANU 2026 event schedule — keynotes, talks, hands-on workshops, networking, and community sessions across a full day at ANU Canberra, October 2026.",
+  alternates: {
+    canonical: `${siteUrl}/schedule`,
+  },
+  openGraph: {
+    title: "Schedule | GDSC ANU 2026",
+    description:
+      "A full day of keynotes, talks, workshops, and community moments at GDSC ANU 2026, ANU Canberra, October 2026.",
+    url: `${siteUrl}/schedule`,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "GDSC ANU 2026 Schedule",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Schedule | GDSC ANU 2026",
+    description:
+      "GDSC ANU 2026 event schedule — keynotes, workshops, networking, and community sessions at ANU Canberra.",
+    images: ["/og-image.png"],
+  },
+};
 
 import Container from "@/components/ui/container";
 import SectionTitle from "@/components/ui/section-title";
@@ -153,7 +186,7 @@ export default function SchedulePage() {
           <SectionTitle
             eyebrow="Agenda"
             title="Sample event timeline"
-            description="Use this as the initial event structure for the website. You can later replace timings, titles, and formats with final confirmed details."
+            description="An outline of the day's flow. Final session titles, timings, and speaker assignments will be confirmed and updated closer to the event."
           />
 
           <div className="mt-12 space-y-5">

@@ -21,7 +21,9 @@ export default function RegisterCTA() {
 
                         <div className="mt-8 flex flex-wrap gap-4">
                             <a
-                                href="#"
+                                href="https://campus.hellorubric.com/?s=9746"
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition hover:opacity-90"
                             >
                                 Register Now

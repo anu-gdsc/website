@@ -13,10 +13,11 @@ export default function Footer() {
                     </div>
 
                     <div className="flex gap-6 text-sm text-white/70">
-                        <a href="#" className="hover:text-white">
+                        <a href="https://www.instagram.com/gdg_anu/" target="_blank" rel="noopener noreferrer" className="hover:text-white">
                             Instagram
                         </a>
-                        <a href="#" className="hover:text-white">
+                        <a href="https://gdg.community.dev/gdg-on-campus-the-australian-national-university-canberra-australia/" 
+                            target="_blank" rel="noopener noreferrer" className="hover:text-white">
                             LinkedIn
                         </a>
                         <a href="#" className="hover:text-white">

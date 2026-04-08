@@ -32,7 +32,7 @@ export default function Hero() {
 
                         <div className="mt-10 flex flex-wrap gap-4">
                             <a
-                                href="#register"
+                                href="https://campus.hellorubric.com/?s=9746" target="_blank" rel="noopener noreferrer"
                                 className="rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition hover:opacity-90"
                             >
                                 Register Now

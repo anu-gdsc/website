@@ -1,334 +1,226 @@
+import type { Metadata } from "next";
 import Link from "next/link";
-import { ArrowRight, BriefcaseBusiness, Linkedin, Mic, Sparkles, Users } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
-import Container from "@/components/ui/container";
-import SectionTitle from "@/components/ui/section-title";
-import PageHero from "@/components/layout/page-hero";
-
-type Speaker = {
-  name: string;
-  role: string;
-  company: string;
-  bio: string;
-  category: string;
-  linkedin?: string;
-};
-
-const featuredSpeakers: Speaker[] = [
-  {
-    name: "Aarav Mehta",
-    role: "Software Engineer",
-    company: "Google",
-    category: "Engineering",
-    bio: "Works across modern product engineering systems and enjoys helping students think more clearly about building, shipping, and long-term technical growth.",
-    linkedin: "#",
-  },
-  {
-    name: "Riya Sharma",
-    role: "Product Designer",
-    company: "Canva",
-    category: "Design",
-    bio: "Focuses on product thinking, user experience, and how design decisions shape stronger digital products from idea to execution.",
-    linkedin: "#",
-  },
-];
-
-const allSpeakers: Speaker[] = [
-  {
-    name: "Aarav Mehta",
-    role: "Software Engineer",
-    company: "Google",
-    category: "Engineering",
-    bio: "Works across modern product engineering systems and enjoys helping students think more clearly about building, shipping, and long-term technical growth.",
-    linkedin: "#",
-  },
-  {
-    name: "Riya Sharma",
-    role: "Product Designer",
-    company: "Canva",
-    category: "Design",
-    bio: "Focuses on product thinking, user experience, and how design decisions shape stronger digital products from idea to execution.",
-    linkedin: "#",
-  },
-  {
-    name: "Daniel Lee",
-    role: "Cloud Advocate",
-    company: "Google Cloud",
-    category: "Cloud",
-    bio: "Shares practical guidance on cloud systems, developer workflows, and the skills students need to move from learning to real-world execution.",
-    linkedin: "#",
-  },
-  {
-    name: "Emily Chen",
-    role: "Founder",
-    company: "Startup Community",
-    category: "Startup",
-    bio: "Brings experience from founder communities and early-stage product environments, with a strong focus on action, clarity, and student momentum.",
-    linkedin: "#",
-  },
-  {
-    name: "Noah Patel",
-    role: "Frontend Engineer",
-    company: "Atlassian",
-    category: "Web",
-    bio: "Interested in frontend systems, accessibility, developer experience, and the craft of building polished digital interfaces that scale.",
-    linkedin: "#",
-  },
-  {
-    name: "Sophia Nguyen",
-    role: "AI Product Specialist",
-    company: "Tech Startup",
-    category: "AI",
-    bio: "Explores how teams can use AI meaningfully in products, workflows, and experimentation without losing focus on real user value.",
-    linkedin: "#",
-  },
-  {
-    name: "James Kim",
-    role: "Developer Relations Engineer",
-    company: "Open Source Community",
-    category: "Community",
-    bio: "Passionate about open source, student communities, and helping new developers find confidence through contribution and collaboration.",
-    linkedin: "#",
-  },
-  {
-    name: "Olivia Tan",
-    role: "Product Manager",
-    company: "Canberra Tech",
-    category: "Product",
-    bio: "Works at the intersection of user needs, execution, and team alignment, with a strong interest in how students can grow into product roles.",
-    linkedin: "#",
-  },
-];
-
-const benefits = [
-  {
-    icon: Mic,
-    title: "A broad mix of perspectives",
-    description:
-      "Bring together engineers, designers, product thinkers, founders, and community leaders to create a richer event experience.",
-  },
-  {
-    icon: Sparkles,
-    title: "Sessions grounded in real practice",
-    description:
-      "Prioritise speakers who can share practical lessons, useful workflows, and relevant experience rather than generic inspiration.",
-  },
-  {
-    icon: Users,
-    title: "Better access for students",
-    description:
-      "Give attendees opportunities to ask questions, make connections, and learn directly from people working across the industry.",
-  },
-];
-
-function categoryStyles(category: string) {
-  switch (category) {
-    case "Engineering":
-      return "border border-[#4285F4]/30 bg-[#4285F4]/10 text-[#93C5FD]";
-    case "Design":
-      return "border border-[#EA4335]/30 bg-[#EA4335]/10 text-[#FCA5A5]";
-    case "Cloud":
-      return "border border-[#34A853]/30 bg-[#34A853]/10 text-[#9AE6B4]";
-    case "AI":
-      return "border border-[#FBBC05]/30 bg-[#FBBC05]/10 text-[#FDE68A]";
-    case "Web":
-      return "border border-cyan-400/30 bg-cyan-400/10 text-cyan-200";
-    case "Product":
-      return "border border-fuchsia-400/30 bg-fuchsia-400/10 text-fuchsia-200";
-    case "Startup":
-      return "border border-orange-400/30 bg-orange-400/10 text-orange-200";
-    case "Community":
-      return "border border-white/15 bg-white/5 text-white/75";
-    default:
-      return "border border-white/15 bg-white/5 text-white/75";
-  }
-}
-
-function SpeakerCard({ speaker, featured = false }: { speaker: Speaker; featured?: boolean }) {
+function LinkedInIcon({ className }: { className?: string }) {
   return (
-    <div
-      className={`rounded-[2rem] border border-white/10 bg-white/[0.04] p-5 transition hover:border-white/20 hover:bg-white/[0.06] ${
-        featured ? "h-full" : ""
-      }`}
-    >
-      <div className="aspect-[4/5] rounded-[1.5rem] border border-white/10 bg-gradient-to-br from-white/10 to-white/[0.03]" />
-
-      <div className="mt-5">
-        <div className="flex flex-wrap items-center gap-3">
-          <h3 className="text-xl font-semibold text-white">{speaker.name}</h3>
-          <span
-            className={`rounded-full px-3 py-1 text-xs font-semibold ${categoryStyles(
-              speaker.category
-            )}`}
-          >
-            {speaker.category}
-          </span>
-        </div>
-
-        <p className="mt-2 text-sm text-white/70">
-          {speaker.role} at {speaker.company}
-        </p>
-
-        <p className="mt-4 text-sm leading-7 text-white/65">{speaker.bio}</p>
-
-        <div className="mt-5 flex items-center gap-3">
-          {speaker.linkedin && (
-            <a
-              href={speaker.linkedin}
-              target="_blank"
-              rel="noreferrer"
-              className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm font-medium text-white transition hover:bg-white/5"
-            >
-              <Linkedin className="h-4 w-4" />
-              LinkedIn
-            </a>
-          )}
-        </div>
-      </div>
-    </div>
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" className={className}>
+      <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+    </svg>
   );
 }
+import Container from "@/components/ui/container";
+import PageHero from "@/components/layout/page-hero";
+import { speakers } from "@/data/speakers";
+
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdscanu.com.au";
+
+export const metadata: Metadata = {
+  title: "Speakers",
+  description:
+    "Meet the speakers at GDSC ANU 2026. Industry leaders from Google, Red Hat, and AWS covering AI, multiagent systems, cloud engineering, career development, and open source — at ANU Canberra, October 2026.",
+  alternates: {
+    canonical: `${siteUrl}/speakers`,
+  },
+  openGraph: {
+    title: "Speakers | GDSC ANU 2026",
+    description:
+      "Harshil Siyani, Anupam Phogat, Dave Hall, Paul Wayper and more — industry voices covering AI, cloud, open source and career growth at GDSC ANU, October 2026.",
+    url: `${siteUrl}/speakers`,
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "GDSC ANU 2026 Speakers",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Speakers | GDSC ANU 2026",
+    description:
+      "Meet the speakers at GDSC ANU — AI, cloud, open source, and career sessions at ANU Canberra, October 2026.",
+    images: ["/og-image.png"],
+  },
+};
+
+const colorBorder = {
+  blue: "bg-blue-500/50 shadow-[0_0_30px_rgba(59,130,246,0.55)]",
+  green: "bg-green-500/50 shadow-[0_0_30px_rgba(34,197,94,0.55)]",
+  yellow: "bg-yellow-400/40 shadow-[0_0_30px_rgba(250,204,21,0.55)]",
+  red: "bg-red-500/50 shadow-[0_0_30px_rgba(239,68,68,0.55)]",
+};
+
+const categoryColor = {
+  blue: "border-[#4285F4]/30 bg-[#4285F4]/10 text-[#93C5FD]",
+  green: "border-[#34A853]/30 bg-[#34A853]/10 text-[#9AE6B4]",
+  yellow: "border-[#FBBC05]/30 bg-[#FBBC05]/10 text-[#FDE68A]",
+  red: "border-[#EA4335]/30 bg-[#EA4335]/10 text-[#FCA5A5]",
+};
+
+const speakerListSchema = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  name: "GDSC ANU 2026 Speakers",
+  url: `${siteUrl}/speakers`,
+  numberOfItems: speakers.length,
+  itemListElement: speakers.map((speaker, i) => ({
+    "@type": "ListItem",
+    position: i + 1,
+    item: {
+      "@type": "Person",
+      name: speaker.name,
+      jobTitle: speaker.role,
+      worksFor: { "@type": "Organization", name: speaker.company },
+      description: speaker.bio,
+    },
+  })),
+};
 
 export default function SpeakersPage() {
   return (
     <>
-      <PageHero
-        eyebrow="Speakers"
-        title="Meet the people shaping the day."
-        description="A curated lineup of engineers, designers, product leaders, founders, and community voices bringing practical insights to students and builders."
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(speakerListSchema) }}
       />
 
+      <PageHero
+        eyebrow="Speakers"
+        title="The people shaping GDSC ANU 2026."
+        description="Engineers, architects, and practitioners from Google, Red Hat, and the AWS community — covering AI, cloud, open source, and the real skills that matter after graduation."
+      />
+
+      {/* Speaker cards */}
       <section className="border-b border-white/10 bg-black py-20 md:py-28">
         <Container>
-          <SectionTitle
-            eyebrow="Featured voices"
-            title="A strong mix of industry and community experience"
-            description="Highlight key speakers early to create trust, energy, and anticipation around the event."
-          />
-
-          <div className="mt-12 grid gap-6 lg:grid-cols-2">
-            {featuredSpeakers.map((speaker) => (
-              <SpeakerCard key={speaker.name} speaker={speaker} featured />
-            ))}
-          </div>
-        </Container>
-      </section>
-
-      <section className="border-b border-white/10 bg-zinc-950 py-20 md:py-28">
-        <Container>
-          <SectionTitle
-            eyebrow="Why the lineup matters"
-            title="Designed to be relevant, practical, and accessible"
-            description="A good speaker lineup is not just about brand names. It is about giving students useful exposure to people, ideas, and paths that feel real."
-          />
-
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
-            {benefits.map((item) => {
-              const Icon = item.icon;
-
-              return (
-                <div
-                  key={item.title}
-                  className="rounded-3xl border border-white/10 bg-black p-6 transition hover:border-white/20 hover:bg-white/[0.03]"
-                >
-                  <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
-                    <Icon className="h-5 w-5 text-white/75" />
+          <div className="grid gap-8 md:grid-cols-2">
+            {speakers.map((speaker) => (
+              <article
+                key={speaker.name}
+                className={`rounded-[2rem] p-[2px] ${colorBorder[speaker.color]}`}
+              >
+                <div className="flex h-full flex-col rounded-[1.875rem] bg-black p-6 md:flex-row md:gap-7">
+                  {/* Photo */}
+                  <div className="shrink-0">
+                    <img
+                      src={speaker.image}
+                      alt={`${speaker.name} — ${speaker.role} at ${speaker.company}`}
+                      className="h-56 w-full rounded-2xl object-cover md:h-full md:w-44"
+                    />
                   </div>
 
-                  <h3 className="mt-5 text-xl font-semibold text-white">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-7 text-white/70">{item.description}</p>
+                  {/* Info */}
+                  <div className="mt-5 flex flex-col md:mt-0">
+                    <div className="flex flex-wrap items-center gap-3">
+                      <span
+                        className={`rounded-full border px-3 py-1 text-xs font-semibold ${categoryColor[speaker.color]}`}
+                      >
+                        {speaker.category}
+                      </span>
+                    </div>
+
+                    <h2 className="mt-3 text-2xl font-semibold text-white">{speaker.name}</h2>
+                    <p className="mt-1 text-sm text-white/55">
+                      {speaker.role} · {speaker.company}
+                    </p>
+
+                    <p className="mt-4 text-sm leading-7 text-white/65 grow">{speaker.bio}</p>
+
+                    <div className="mt-6 flex items-center gap-3">
+                      {speaker.linkedin && speaker.linkedin !== "#" && (
+                        <a
+                          href={speaker.linkedin}
+                          target="_blank"
+                          rel="noreferrer noopener"
+                          aria-label={`${speaker.name} on LinkedIn`}
+                          className="inline-flex items-center gap-2 rounded-full border border-white/15 px-4 py-2 text-sm font-medium text-white transition hover:bg-white/5"
+                        >
+                          <LinkedInIcon className="h-4 w-4" />
+                          LinkedIn
+                        </a>
+                      )}
+                    </div>
+                  </div>
                 </div>
-              );
-            })}
-          </div>
-        </Container>
-      </section>
-
-      <section className="border-b border-white/10 bg-black py-20 md:py-28">
-        <Container>
-          <SectionTitle
-            eyebrow="All speakers"
-            title="Explore the event lineup"
-            description="Use this section to showcase the full speaker list. Later you can replace placeholders with confirmed names, photos, bios, and live profile links."
-          />
-
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
-            {allSpeakers.map((speaker) => (
-              <SpeakerCard key={speaker.name} speaker={speaker} />
+              </article>
             ))}
           </div>
         </Container>
       </section>
 
+      {/* Sessions */}
       <section className="border-b border-white/10 bg-zinc-950 py-20 md:py-28">
         <Container>
-          <div className="grid gap-6 lg:grid-cols-3">
-            <div className="rounded-[2rem] border border-white/10 bg-black p-8">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
-                <BriefcaseBusiness className="h-5 w-5 text-white/75" />
-              </div>
-              <h3 className="mt-5 text-xl font-semibold text-white">Industry insight</h3>
-              <p className="mt-3 text-sm leading-7 text-white/70">
-                Give students exposure to people actively working across engineering, design,
-                product, AI, and startups.
-              </p>
-            </div>
+          <p className="text-sm font-semibold uppercase tracking-[0.22em] text-white/55">
+            Sessions
+          </p>
+          <h2 className="mt-4 max-w-2xl text-3xl font-semibold text-white md:text-5xl">
+            What you'll hear on the day
+          </h2>
+          <p className="mt-4 max-w-xl text-base leading-7 text-white/65">
+            Four focused sessions spanning AI systems, cloud pragmatism, industry realities, and the
+            open source ecosystem.
+          </p>
 
-            <div className="rounded-[2rem] border border-white/10 bg-black p-8">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
-                <Users className="h-5 w-5 text-white/75" />
-              </div>
-              <h3 className="mt-5 text-xl font-semibold text-white">Human conversations</h3>
-              <p className="mt-3 text-sm leading-7 text-white/70">
-                Keep the lineup approachable so attendees feel encouraged to ask, connect, and
-                continue conversations beyond the stage.
-              </p>
-            </div>
-
-            <div className="rounded-[2rem] border border-white/10 bg-black p-8">
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
-                <Mic className="h-5 w-5 text-white/75" />
-              </div>
-              <h3 className="mt-5 text-xl font-semibold text-white">Sessions with substance</h3>
-              <p className="mt-3 text-sm leading-7 text-white/70">
-                Prioritise people who can teach, demonstrate, and share honest lessons from real
-                work rather than only polished talking points.
-              </p>
-            </div>
-          </div>
+          <ol className="mt-12 space-y-4" aria-label="Event sessions">
+            {speakers.map((speaker, i) => (
+              <li
+                key={speaker.name}
+                className="grid gap-4 rounded-2xl border border-white/10 bg-black/60 p-6 transition hover:border-white/20 sm:grid-cols-[3rem_1fr_auto]"
+              >
+                <span className="text-4xl font-semibold tabular-nums text-white/15 leading-none">
+                  {String(i + 1).padStart(2, "0")}
+                </span>
+                <div>
+                  <p className="text-lg font-semibold leading-snug text-white">{speaker.topic}</p>
+                  <p className="mt-1 text-sm text-white/50">
+                    {speaker.name} · {speaker.company}
+                  </p>
+                </div>
+                <span
+                  className={`self-start rounded-full border px-3 py-1 text-xs font-semibold ${categoryColor[speaker.color]}`}
+                >
+                  {speaker.category}
+                </span>
+              </li>
+            ))}
+          </ol>
         </Container>
       </section>
 
+      {/* CTA */}
       <section className="bg-black py-20 md:py-28">
         <Container>
           <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 md:p-12">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(66,133,244,0.16),transparent_25%),radial-gradient(circle_at_bottom_right,rgba(251,188,5,0.14),transparent_25%)]" />
-
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(66,133,244,0.16),transparent_25%),radial-gradient(circle_at_bottom_right,rgba(52,168,83,0.14),transparent_25%)]" />
             <div className="relative max-w-3xl">
               <p className="text-sm font-semibold uppercase tracking-[0.22em] text-white/55">
-                Next up
+                October 2026 · ANU Campus, Canberra
               </p>
               <h2 className="mt-3 text-3xl font-semibold text-white md:text-5xl">
-                Explore the schedule and plan your day.
+                Hear them speak in person.
               </h2>
               <p className="mt-4 text-base leading-7 text-white/70 md:text-lg">
-                See how the event flows across talks, workshops, networking, and community moments.
+                Register now to secure your spot at GDSC ANU 2026 and get direct access to these
+                sessions, workshops, and the people behind them.
               </p>
-
               <div className="mt-8 flex flex-wrap gap-4">
-                <Link
-                  href="/schedule"
+                <a
+                  href="https://campus.hellorubric.com/?s=9746"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center gap-2 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition hover:opacity-90"
                 >
-                  View Schedule
+                  Register Now
                   <ArrowRight className="h-4 w-4" />
-                </Link>
-
+                </a>
                 <Link
-                  href="/register"
+                  href="/#schedule"
                   className="rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-white transition hover:bg-white/5"
                 >
-                  Register Interest
+                  View Schedule
                 </Link>
               </div>
             </div>

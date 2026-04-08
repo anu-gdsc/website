@@ -48,9 +48,22 @@ export default function Hero() {
                     </div>
 
                     <div className="relative flex items-center justify-center">
-                        <div className="relative h-[360px] w-[360px] rounded-full bg-[conic-gradient(from_180deg_at_50%_50%,#4285F4_0deg,#EA4335_90deg,#FBBC05_180deg,#34A853_270deg,#4285F4_360deg)] p-[1px] shadow-[0_0_120px_rgba(66,133,244,0.18)] md:h-[460px] md:w-[460px]">
-                            <div className="flex h-full w-full items-center justify-center rounded-full bg-black/90 backdrop-blur-xl">
-                                <div className="h-[65%] w-[65%] rounded-full bg-[radial-gradient(circle,rgba(255,255,255,0.18),rgba(255,255,255,0.02),transparent_70%)] blur-sm" />
+                        <div className="siri-orb-pulse relative h-[360px] w-[360px] md:h-[460px] md:w-[460px]">
+                            {/* Rotating gradient border ring */}
+                            <div className="siri-ring absolute inset-0 rounded-full" />
+
+                            {/* Outer glow */}
+                            <div className="pointer-events-none absolute -inset-4 rounded-full bg-[radial-gradient(circle,rgba(66,133,244,0.12),rgba(234,67,53,0.08),transparent_70%)]" />
+
+                            {/* Inner dark orb with flowing blobs */}
+                            <div className="absolute inset-[2px] overflow-hidden rounded-full bg-[#040404]">
+                                <div className="siri-blob siri-blob-blue" />
+                                <div className="siri-blob siri-blob-red" />
+                                <div className="siri-blob siri-blob-yellow" />
+                                <div className="siri-blob siri-blob-green" />
+
+                                {/* Subtle center highlight */}
+                                <div className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(circle_at_50%_38%,rgba(255,255,255,0.07),transparent_55%)]" />
                             </div>
                         </div>
                     </div>

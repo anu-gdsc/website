@@ -24,3 +24,92 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* Google Siri orb animation */
+@keyframes siri-ring-spin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes siri-pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.04); }
+}
+
+@keyframes siri-blob-blue {
+  0%, 100% { transform: translate(-85%, -85%); }
+  25%       { transform: translate(-15%, -80%); }
+  50%       { transform: translate(-55%, -45%); }
+  75%       { transform: translate(-80%, -15%); }
+}
+
+@keyframes siri-blob-red {
+  0%, 100% { transform: translate(-15%, -15%); }
+  25%       { transform: translate(-80%, -20%); }
+  50%       { transform: translate(-45%, -55%); }
+  75%       { transform: translate(-20%, -85%); }
+}
+
+@keyframes siri-blob-yellow {
+  0%, 100% { transform: translate(-85%, -15%); }
+  33%       { transform: translate(-45%, -75%); }
+  66%       { transform: translate(-10%, -45%); }
+}
+
+@keyframes siri-blob-green {
+  0%, 100% { transform: translate(-15%, -85%); }
+  33%       { transform: translate(-55%, -20%); }
+  66%       { transform: translate(-80%, -55%); }
+}
+
+.siri-orb-pulse {
+  animation: siri-pulse 3.5s ease-in-out infinite;
+  will-change: transform;
+}
+
+.siri-ring {
+  background: conic-gradient(from 0deg, #4285F4, #EA4335, #FBBC05, #34A853, #4285F4);
+  animation: siri-ring-spin 6s linear infinite;
+  will-change: transform;
+}
+
+.siri-blob {
+  position: absolute;
+  border-radius: 50%;
+  mix-blend-mode: screen;
+  top: 50%;
+  left: 50%;
+  will-change: transform;
+}
+
+.siri-blob-blue {
+  width: 60%;
+  height: 60%;
+  background: radial-gradient(circle, #4285F4 0%, #4285F466 100%);
+  filter: blur(48px);
+  animation: siri-blob-blue 7s ease-in-out infinite;
+}
+
+.siri-blob-red {
+  width: 55%;
+  height: 55%;
+  background: radial-gradient(circle, #EA4335 0%, #EA433566 100%);
+  filter: blur(42px);
+  animation: siri-blob-red 6s ease-in-out infinite;
+}
+
+.siri-blob-yellow {
+  width: 50%;
+  height: 50%;
+  background: radial-gradient(circle, #FBBC05 0%, #FBBC0566 100%);
+  filter: blur(40px);
+  animation: siri-blob-yellow 8.5s ease-in-out infinite;
+}
+
+.siri-blob-green {
+  width: 55%;
+  height: 55%;
+  background: radial-gradient(circle, #34A853 0%, #34A85366 100%);
+  filter: blur(44px);
+  animation: siri-blob-green 5.5s ease-in-out infinite;
+}

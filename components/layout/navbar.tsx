@@ -55,7 +55,8 @@ export default function Navbar() {
                 </div>
 
                 <div className="hidden md:block">
-                    <a href="/register" className="group relative inline-flex items-center justify-center rounded-full p-[1.5px]">
+                    <a href="https://campus.hellorubric.com/?s=9746" target="_blank" rel="noopener noreferrer" 
+                    className="group relative inline-flex items-center justify-center rounded-full p-[1.5px]">
                         <span className="absolute inset-0 rounded-full bg-[linear-gradient(90deg,#4285F4,#EA4335,#FBBC05,#34A853)] opacity-90 transition group-hover:opacity-100" />
                         <span className="relative rounded-full bg-black px-5 py-2.5 text-sm font-semibold text-white">
                             Register Now

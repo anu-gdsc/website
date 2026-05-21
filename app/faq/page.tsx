@@ -6,6 +6,7 @@ import Container from "@/components/ui/container";
 import SectionTitle from "@/components/ui/section-title";
 import PageHero from "@/components/layout/page-hero";
 import FAQAccordion from "@/components/sections/faq-accordion";
+import { getFaqs } from "@/sanity/lib/queries";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdganu.com";
 
@@ -39,7 +40,8 @@ export const metadata: Metadata = {
   },
 };
 
-export default function FAQPage() {
+export default async function FAQPage() {
+  const faqs = await getFaqs();
   return (
     <>
       <PageHero
@@ -57,7 +59,7 @@ export default function FAQPage() {
           />
 
           <div className="mt-12">
-            <FAQAccordion />
+            <FAQAccordion faqs={faqs} />
           </div>
         </Container>
       </section>

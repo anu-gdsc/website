@@ -5,12 +5,12 @@ type Track = { title: string; desc: string };
 
 export default function Tracks({ tracks }: { tracks: Track[] }) {
   return (
-    <section id="tracks" className="border-b border-white/10 bg-zinc-950 py-20 md:py-28">
+    <section id="projects" className="border-b border-white/10 bg-zinc-950 py-20 md:py-28">
       <Container>
         <SectionTitle
-          eyebrow="Tracks"
-          title="What you will explore"
-          description="A curated set of tracks covering the most relevant topics for modern student developers."
+          eyebrow="Projects"
+          title="What you will build"
+          description="Hands-on project tracks where students and members collaborate to build real things together."
         />
 
         <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">

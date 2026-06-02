@@ -155,8 +155,8 @@ export default async function SchedulePage() {
         <Container>
           <SectionTitle
             eyebrow="Session themes"
-            title="Built around the tracks students care about most"
-            description="The day can be structured around focused tracks so attendees can explore topics that match their interests, goals, and level of experience."
+            title="Built around the projects students care about most"
+            description="The day is structured around focused project tracks so attendees can collaborate on topics that match their interests, goals, and level of experience."
           />
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">

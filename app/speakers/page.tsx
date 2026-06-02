@@ -11,9 +11,10 @@ function LinkedInIcon({ className }: { className?: string }) {
 }
 import Container from "@/components/ui/container";
 import PageHero from "@/components/layout/page-hero";
-import { speakers } from "@/data/speakers";
+import { getSpeakers } from "@/sanity/lib/queries";
+import Image from "next/image";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdscanu.com.au";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdganu.com";
 
 export const metadata: Metadata = {
   title: "Speakers",
@@ -59,26 +60,40 @@ const categoryColor = {
   red: "border-[#EA4335]/30 bg-[#EA4335]/10 text-[#FCA5A5]",
 };
 
-const speakerListSchema = {
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  name: "GDSC ANU 2026 Speakers",
-  url: `${siteUrl}/speakers`,
-  numberOfItems: speakers.length,
-  itemListElement: speakers.map((speaker, i) => ({
-    "@type": "ListItem",
-    position: i + 1,
-    item: {
-      "@type": "Person",
-      name: speaker.name,
-      jobTitle: speaker.role,
-      worksFor: { "@type": "Organization", name: speaker.company },
-      description: speaker.bio,
-    },
-  })),
+type Speaker = {
+  name: string;
+  role: string;
+  company: string;
+  topic: string;
+  bio: string;
+  category: string;
+  color: "blue" | "green" | "yellow" | "red";
+  image: string;
+  linkedin?: string;
 };
 
-export default function SpeakersPage() {
+export default async function SpeakersPage() {
+  const speakers: Speaker[] = await getSpeakers();
+
+  const speakerListSchema = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "GDSC ANU 2026 Speakers",
+    url: `${siteUrl}/speakers`,
+    numberOfItems: speakers.length,
+    itemListElement: speakers.map((speaker, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      item: {
+        "@type": "Person",
+        name: speaker.name,
+        jobTitle: speaker.role,
+        worksFor: { "@type": "Organization", name: speaker.company },
+        description: speaker.bio,
+      },
+    })),
+  };
+
   return (
     <>
       <script
@@ -104,9 +119,11 @@ export default function SpeakersPage() {
                 <div className="flex h-full flex-col rounded-[1.875rem] bg-black p-6 md:flex-row md:gap-7">
                   {/* Photo */}
                   <div className="shrink-0">
-                    <img
+                    <Image
                       src={speaker.image}
                       alt={`${speaker.name} — ${speaker.role} at ${speaker.company}`}
+                      width={176}
+                      height={224}
                       className="h-56 w-full rounded-2xl object-cover md:h-full md:w-44"
                     />
                   </div>

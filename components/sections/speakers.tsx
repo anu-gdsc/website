@@ -1,7 +1,19 @@
 import Link from "next/link";
+import Image from "next/image";
 import Container from "@/components/ui/container";
 import SectionTitle from "@/components/ui/section-title";
-import { speakers } from "@/data/speakers";
+
+type Speaker = {
+  name: string;
+  role: string;
+  company: string;
+  topic: string;
+  bio: string;
+  category: string;
+  color: "blue" | "green" | "yellow" | "red";
+  image: string;
+  linkedin?: string;
+};
 
 const colorStyles = {
   blue: "bg-blue-500/50 shadow-[0_0_25px_rgba(59,130,246,0.6)]",
@@ -10,7 +22,7 @@ const colorStyles = {
   red: "bg-red-500/50 shadow-[0_0_25px_rgba(239,68,68,0.6)]",
 };
 
-export default function Speakers() {
+export default function Speakers({ speakers }: { speakers: Speaker[] }) {
   return (
     <section id="speakers" className="border-b border-white/10 bg-black py-20 md:py-28">
       <Container>
@@ -24,11 +36,17 @@ export default function Speakers() {
           {speakers.map((speaker) => (
             <div key={speaker.name} className={`rounded-3xl p-[2px] ${colorStyles[speaker.color]}`}>
               <div className="rounded-3xl bg-black p-5">
-                <img
-                  src={speaker.image}
-                  alt={speaker.name}
-                  className="aspect-[4/5] w-full rounded-2xl object-cover"
-                />
+                {speaker.image ? (
+                  <Image
+                    src={speaker.image}
+                    alt={speaker.name}
+                    width={400}
+                    height={500}
+                    className="aspect-[4/5] w-full rounded-2xl object-cover"
+                  />
+                ) : (
+                  <div className="aspect-[4/5] w-full rounded-2xl bg-white/5" />
+                )}
                 <div className="mt-5">
                   <h3 className="text-lg font-semibold">{speaker.name}</h3>
                   <p className="mt-1 text-sm text-white/65">{speaker.topic}</p>

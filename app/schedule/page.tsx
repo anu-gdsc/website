@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, CalendarDays, Clock3, MapPin, Mic, Users } from "lucide-react";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdscanu.com.au";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdganu.com";
 
 export const metadata: Metadata = {
   title: "Schedule",
@@ -37,6 +37,7 @@ export const metadata: Metadata = {
 import Container from "@/components/ui/container";
 import SectionTitle from "@/components/ui/section-title";
 import PageHero from "@/components/layout/page-hero";
+import { getScheduleItems, getTracks } from "@/sanity/lib/queries";
 
 const dayInfo = [
   {
@@ -56,80 +57,7 @@ const dayInfo = [
   },
 ];
 
-const timeline = [
-  {
-    time: "09:00 AM",
-    title: "Registration and Welcome",
-    type: "Arrival",
-    description:
-      "Check in, explore the venue, meet other attendees, and settle in before the opening begins.",
-  },
-  {
-    time: "10:00 AM",
-    title: "Opening Keynote",
-    type: "Keynote",
-    description:
-      "A big-picture session to set the tone for the day with ideas around technology, builders, and community.",
-  },
-  {
-    time: "11:00 AM",
-    title: "Talk Sessions Across Core Tracks",
-    type: "Talks",
-    description:
-      "Parallel sessions across AI, cloud, web, product, and developer growth with practical insights for students.",
-  },
-  {
-    time: "12:30 PM",
-    title: "Lunch and Networking",
-    type: "Networking",
-    description:
-      "Take a break, meet speakers and peers, and continue conversations in a more informal setting.",
-  },
-  {
-    time: "01:30 PM",
-    title: "Hands-on Workshops",
-    type: "Workshop",
-    description:
-      "Interactive sessions focused on tools, workflows, and building with guided support from organisers and speakers.",
-  },
-  {
-    time: "03:30 PM",
-    title: "Panel or Community Session",
-    type: "Discussion",
-    description:
-      "A collaborative session on careers, projects, open source, and what it means to grow in developer communities.",
-  },
-  {
-    time: "04:30 PM",
-    title: "Closing Remarks",
-    type: "Closing",
-    description:
-      "A wrap-up on key themes from the day, next steps, and ways to stay involved with the GDSC ANU community.",
-  },
-];
 
-const tracks = [
-  {
-    title: "AI and Machine Learning",
-    description:
-      "Practical sessions on modern AI tooling, experimentation, real-world applications, and student-led innovation.",
-  },
-  {
-    title: "Cloud and DevOps",
-    description:
-      "Understand how products are deployed, scaled, and maintained using production-minded engineering practices.",
-  },
-  {
-    title: "Web and Product",
-    description:
-      "Explore frontend craft, product thinking, UX, and how strong digital experiences are designed and built.",
-  },
-  {
-    title: "Career and Community",
-    description:
-      "Learn through conversations on growth, collaboration, open source, and navigating opportunities as a student.",
-  },
-];
 
 function getTypeStyles(type: string) {
   switch (type) {
@@ -148,7 +76,9 @@ function getTypeStyles(type: string) {
   }
 }
 
-export default function SchedulePage() {
+export default async function SchedulePage() {
+  const [timeline, tracks] = await Promise.all([getScheduleItems(), getTracks()]);
+
   return (
     <>
       <PageHero
@@ -190,7 +120,7 @@ export default function SchedulePage() {
           />
 
           <div className="mt-12 space-y-5">
-            {timeline.map((item) => (
+            {timeline.map((item: { time: string; title: string; desc: string; type?: string }) => (
               <div
                 key={item.time + item.title}
                 className="grid gap-5 rounded-[2rem] border border-white/10 bg-black p-6 md:grid-cols-[140px_1fr] md:p-8"
@@ -204,7 +134,7 @@ export default function SchedulePage() {
                     <h3 className="text-xl font-semibold text-white">{item.title}</h3>
                     <span
                       className={`rounded-full px-3 py-1 text-xs font-semibold ${getTypeStyles(
-                        item.type
+                        item.type ?? ""
                       )}`}
                     >
                       {item.type}
@@ -212,7 +142,7 @@ export default function SchedulePage() {
                   </div>
 
                   <p className="mt-3 max-w-3xl text-sm leading-7 text-white/70 md:text-base">
-                    {item.description}
+                    {item.desc}
                   </p>
                 </div>
               </div>
@@ -225,19 +155,19 @@ export default function SchedulePage() {
         <Container>
           <SectionTitle
             eyebrow="Session themes"
-            title="Built around the tracks students care about most"
-            description="The day can be structured around focused tracks so attendees can explore topics that match their interests, goals, and level of experience."
+            title="Built around the projects students care about most"
+            description="The day is structured around focused project tracks so attendees can collaborate on topics that match their interests, goals, and level of experience."
           />
 
           <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {tracks.map((track) => (
+            {tracks.map((track: { title: string; desc: string }) => (
               <div
                 key={track.title}
                 className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 transition hover:border-white/20 hover:bg-white/[0.06]"
               >
                 <div className="mb-5 h-2 w-16 rounded-full bg-[linear-gradient(90deg,#4285F4,#EA4335,#FBBC05,#34A853)]" />
                 <h3 className="text-xl font-semibold text-white">{track.title}</h3>
-                <p className="mt-3 text-sm leading-7 text-white/70">{track.description}</p>
+                <p className="mt-3 text-sm leading-7 text-white/70">{track.desc}</p>
               </div>
             ))}
           </div>

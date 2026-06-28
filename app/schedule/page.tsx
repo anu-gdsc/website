@@ -38,6 +38,8 @@ import Container from "@/components/ui/container";
 import SectionTitle from "@/components/ui/section-title";
 import PageHero from "@/components/layout/page-hero";
 import { getScheduleItems, getTracks } from "@/sanity/lib/queries";
+import { FadeIn } from "@/components/motion/fade-in";
+import { StaggerContainer, StaggerItem } from "@/components/motion/stagger";
 
 const dayInfo = [
   {
@@ -89,11 +91,12 @@ export default async function SchedulePage() {
 
       <section className="border-b border-white/10 bg-black py-20 md:py-28">
         <Container>
-          <div className="grid gap-6 md:grid-cols-3">
+          <StaggerContainer className="grid gap-6 md:grid-cols-3">
             {dayInfo.map((item) => {
               const Icon = item.icon;
 
               return (
+                <StaggerItem key={item.label}>
                 <div
                   key={item.label}
                   className="rounded-3xl border border-white/10 bg-white/[0.04] p-6"
@@ -105,22 +108,26 @@ export default async function SchedulePage() {
                   <p className="mt-5 text-sm font-medium text-white/60">{item.label}</p>
                   <p className="mt-2 text-lg font-semibold text-white">{item.value}</p>
                 </div>
+                </StaggerItem>
               );
             })}
-          </div>
+          </StaggerContainer>
         </Container>
       </section>
 
       <section className="border-b border-white/10 bg-zinc-950 py-20 md:py-28">
         <Container>
+          <FadeIn>
           <SectionTitle
             eyebrow="Agenda"
             title="Sample event timeline"
             description="An outline of the day's flow. Final session titles, timings, and speaker assignments will be confirmed and updated closer to the event."
           />
+          </FadeIn>
 
-          <div className="mt-12 space-y-5">
+          <StaggerContainer className="mt-12 space-y-5">
             {timeline.map((item: { time: string; title: string; desc: string; type?: string }) => (
+              <StaggerItem key={item.time + item.title}>
               <div
                 key={item.time + item.title}
                 className="grid gap-5 rounded-[2rem] border border-white/10 bg-black p-6 md:grid-cols-[140px_1fr] md:p-8"
@@ -146,21 +153,25 @@ export default async function SchedulePage() {
                   </p>
                 </div>
               </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </Container>
       </section>
 
       <section className="border-b border-white/10 bg-black py-20 md:py-28">
         <Container>
+          <FadeIn>
           <SectionTitle
             eyebrow="Session themes"
             title="Built around the projects students care about most"
             description="The day is structured around focused project tracks so attendees can collaborate on topics that match their interests, goals, and level of experience."
           />
+          </FadeIn>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+          <StaggerContainer className="mt-12 grid gap-6 md:grid-cols-2 xl:grid-cols-4">
             {tracks.map((track: { title: string; desc: string }) => (
+              <StaggerItem key={track.title}>
               <div
                 key={track.title}
                 className="rounded-3xl border border-white/10 bg-white/[0.04] p-6 transition hover:border-white/20 hover:bg-white/[0.06]"
@@ -169,14 +180,16 @@ export default async function SchedulePage() {
                 <h3 className="text-xl font-semibold text-white">{track.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-white/70">{track.desc}</p>
               </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </Container>
       </section>
 
       <section className="border-b border-white/10 bg-zinc-950 py-20 md:py-28">
         <Container>
-          <div className="grid gap-6 lg:grid-cols-3">
+          <StaggerContainer className="grid gap-6 lg:grid-cols-3">
+            <StaggerItem>
             <div className="rounded-[2rem] border border-white/10 bg-black p-8">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
                 <Mic className="h-5 w-5 text-white/75" />
@@ -187,7 +200,9 @@ export default async function SchedulePage() {
                 frameworks they can actually apply.
               </p>
             </div>
+            </StaggerItem>
 
+            <StaggerItem>
             <div className="rounded-[2rem] border border-white/10 bg-black p-8">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
                 <Users className="h-5 w-5 text-white/75" />
@@ -198,7 +213,9 @@ export default async function SchedulePage() {
                 speakers instead of leaving connection entirely to chance.
               </p>
             </div>
+            </StaggerItem>
 
+            <StaggerItem>
             <div className="rounded-[2rem] border border-white/10 bg-black p-8">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
                 <Clock3 className="h-5 w-5 text-white/75" />
@@ -209,12 +226,14 @@ export default async function SchedulePage() {
                 engaging, energised, and easy to follow throughout the day.
               </p>
             </div>
-          </div>
+            </StaggerItem>
+          </StaggerContainer>
         </Container>
       </section>
 
       <section className="bg-black py-20 md:py-28">
         <Container>
+          <FadeIn>
           <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 md:p-12">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(66,133,244,0.16),transparent_25%),radial-gradient(circle_at_bottom_right,rgba(234,67,53,0.14),transparent_25%)]" />
 
@@ -247,6 +266,7 @@ export default async function SchedulePage() {
               </div>
             </div>
           </div>
+          </FadeIn>
         </Container>
       </section>
     </>

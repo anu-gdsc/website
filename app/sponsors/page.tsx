@@ -42,6 +42,8 @@ export const metadata: Metadata = {
 import Container from "@/components/ui/container";
 import SectionTitle from "@/components/ui/section-title";
 import PageHero from "@/components/layout/page-hero";
+import { FadeIn } from "@/components/motion/fade-in";
+import { StaggerContainer, StaggerItem } from "@/components/motion/stagger";
 
 type SponsorTier = {
   name: string;
@@ -191,6 +193,7 @@ export default function SponsorsPage() {
       <section className="border-b border-white/10 bg-black py-20 md:py-28">
         <Container>
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+            <FadeIn direction="right">
             <div>
               <SectionTitle
                 eyebrow="Partnership overview"
@@ -215,7 +218,9 @@ export default function SponsorsPage() {
                 </p>
               </div>
             </div>
+            </FadeIn>
 
+            <FadeIn direction="left" delay={0.1}>
             <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8">
               <h3 className="text-xl font-semibold text-white">Why partner with the event</h3>
 
@@ -236,20 +241,24 @@ export default function SponsorsPage() {
                 </p>
               </div>
             </div>
+            </FadeIn>
           </div>
         </Container>
       </section>
 
       <section className="border-b border-white/10 bg-zinc-950 py-20 md:py-28">
         <Container>
+          <FadeIn>
           <SectionTitle
             eyebrow="Current partners"
             title="Showcase the organisations backing the event"
             description="Google and ANU are confirmed partners. Additional ecosystem and community partners will be announced closer to the event."
           />
+          </FadeIn>
 
-          <div className="mt-12 grid gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3">
+          <StaggerContainer className="mt-12 grid gap-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3">
             {currentPartners.map((partner) => (
+              <StaggerItem key={partner.name}>
               <div
                 key={partner.name}
                 className="rounded-[2rem] border border-white/10 bg-black p-6 transition hover:border-white/20 hover:bg-white/[0.03]"
@@ -263,21 +272,25 @@ export default function SponsorsPage() {
                   <p className="mt-2 text-sm text-white/60">{partner.type}</p>
                 </div>
               </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </Container>
       </section>
 
       <section className="border-b border-white/10 bg-black py-20 md:py-28">
         <Container>
+          <FadeIn>
           <SectionTitle
             eyebrow="Sponsorship tiers"
             title="A flexible structure for different kinds of support"
             description="Three partnership tiers designed for different levels of involvement — from title visibility to community and ecosystem support."
           />
+          </FadeIn>
 
-          <div className="mt-12 grid gap-6 lg:grid-cols-3">
+          <StaggerContainer className="mt-12 grid gap-6 lg:grid-cols-3">
             {sponsorTiers.map((tier) => (
+              <StaggerItem key={tier.name}>
               <div
                 key={tier.name}
                 className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6"
@@ -299,24 +312,28 @@ export default function SponsorsPage() {
                   ))}
                 </ul>
               </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </Container>
       </section>
 
       <section className="border-b border-white/10 bg-zinc-950 py-20 md:py-28">
         <Container>
+          <FadeIn>
           <SectionTitle
             eyebrow="Why it matters"
             title="Partnership that feels relevant, not decorative"
             description="The best event partnerships strengthen the attendee experience while also creating authentic visibility for the organisations involved."
           />
+          </FadeIn>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <StaggerContainer className="mt-12 grid gap-6 md:grid-cols-3">
             {reasons.map((item) => {
               const Icon = item.icon;
 
               return (
+                <StaggerItem key={item.title}>
                 <div
                   key={item.title}
                   className="rounded-3xl border border-white/10 bg-black p-6 transition hover:border-white/20 hover:bg-white/[0.03]"
@@ -328,14 +345,16 @@ export default function SponsorsPage() {
                   <h3 className="mt-5 text-xl font-semibold text-white">{item.title}</h3>
                   <p className="mt-3 text-sm leading-7 text-white/70">{item.description}</p>
                 </div>
+                </StaggerItem>
               );
             })}
-          </div>
+          </StaggerContainer>
         </Container>
       </section>
 
       <section className="bg-black py-20 md:py-28">
         <Container>
+          <FadeIn>
           <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 md:p-12">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(66,133,244,0.16),transparent_25%),radial-gradient(circle_at_bottom_right,rgba(52,168,83,0.14),transparent_25%)]" />
 
@@ -373,6 +392,7 @@ export default function SponsorsPage() {
               </div>
             </div>
           </div>
+          </FadeIn>
         </Container>
       </section>
     </>

@@ -37,6 +37,8 @@ export const metadata: Metadata = {
 import Container from "@/components/ui/container";
 import SectionTitle from "@/components/ui/section-title";
 import PageHero from "@/components/layout/page-hero";
+import { FadeIn } from "@/components/motion/fade-in";
+import { StaggerContainer, StaggerItem } from "@/components/motion/stagger";
 
 const highlights = [
   {
@@ -85,6 +87,7 @@ export default function AboutPage() {
       <section className="border-b border-white/10 bg-black py-20 md:py-28">
         <Container>
           <div className="grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+            <FadeIn direction="right">
             <div>
               <SectionTitle
                 eyebrow="Overview"
@@ -110,7 +113,9 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
+            </FadeIn>
 
+            <FadeIn direction="left" delay={0.1}>
             <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8">
               <h3 className="text-xl font-semibold text-white">Event snapshot</h3>
 
@@ -142,23 +147,27 @@ export default function AboutPage() {
                 </div>
               </div>
             </div>
+            </FadeIn>
           </div>
         </Container>
       </section>
 
       <section className="border-b border-white/10 bg-zinc-950 py-20 md:py-28">
         <Container>
+          <FadeIn>
           <SectionTitle
             eyebrow="Why this event"
             title="Built to create momentum, not just attendance"
             description="The event is structured to help people leave with more clarity, stronger connections, and practical ideas they can act on."
           />
+          </FadeIn>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <StaggerContainer className="mt-12 grid gap-6 md:grid-cols-3">
             {highlights.map((item) => {
               const Icon = item.icon;
 
               return (
+                <StaggerItem key={item.title}>
                 <div
                   key={item.title}
                   className="rounded-3xl border border-white/10 bg-black p-6 transition hover:border-white/20 hover:bg-white/[0.03]"
@@ -170,15 +179,17 @@ export default function AboutPage() {
                   <h3 className="mt-5 text-xl font-semibold text-white">{item.title}</h3>
                   <p className="mt-3 text-sm leading-7 text-white/70">{item.description}</p>
                 </div>
+                </StaggerItem>
               );
             })}
-          </div>
+          </StaggerContainer>
         </Container>
       </section>
 
       <section className="border-b border-white/10 bg-black py-20 md:py-28">
         <Container>
           <div className="grid gap-10 lg:grid-cols-2">
+            <FadeIn direction="right">
             <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8">
               <h2 className="text-2xl font-semibold text-white">What to expect</h2>
 
@@ -191,7 +202,9 @@ export default function AboutPage() {
                 ))}
               </ul>
             </div>
+            </FadeIn>
 
+            <FadeIn direction="left" delay={0.1}>
             <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8">
               <h2 className="text-2xl font-semibold text-white">Who should attend</h2>
 
@@ -204,12 +217,14 @@ export default function AboutPage() {
                 ))}
               </ul>
             </div>
+            </FadeIn>
           </div>
         </Container>
       </section>
 
       <section className="bg-zinc-950 py-20 md:py-28">
         <Container>
+          <FadeIn>
           <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 md:p-12">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(66,133,244,0.16),transparent_25%),radial-gradient(circle_at_bottom_right,rgba(52,168,83,0.14),transparent_25%)]" />
 
@@ -243,6 +258,7 @@ export default function AboutPage() {
               </div>
             </div>
           </div>
+          </FadeIn>
         </Container>
       </section>
     </>

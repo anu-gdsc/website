@@ -1,8 +1,22 @@
 import type { Metadata } from "next";
+import { Space_Grotesk, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-space",
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  display: "swap",
+});
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdganu.com";
 
@@ -164,7 +178,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-AU" suppressHydrationWarning>
+    <html lang="en-AU" suppressHydrationWarning className={`${spaceGrotesk.variable} ${inter.variable}`}>
       <body className="bg-black text-white antialiased">
         <script
           type="application/ld+json"

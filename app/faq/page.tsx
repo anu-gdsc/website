@@ -7,6 +7,8 @@ import SectionTitle from "@/components/ui/section-title";
 import PageHero from "@/components/layout/page-hero";
 import FAQAccordion from "@/components/sections/faq-accordion";
 import { getFaqs } from "@/sanity/lib/queries";
+import { FadeIn } from "@/components/motion/fade-in";
+import { StaggerContainer, StaggerItem } from "@/components/motion/stagger";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdganu.com";
 
@@ -52,21 +54,26 @@ export default async function FAQPage() {
 
       <section className="border-b border-white/10 bg-black py-20 md:py-28">
         <Container>
+          <FadeIn>
           <SectionTitle
             eyebrow="Quick clarity"
             title="Everything attendees usually ask first"
             description="Organised answers make the event feel easier to understand and more trustworthy."
           />
+          </FadeIn>
 
+          <FadeIn delay={0.15}>
           <div className="mt-12">
             <FAQAccordion faqs={faqs} />
           </div>
+          </FadeIn>
         </Container>
       </section>
 
       <section className="border-b border-white/10 bg-zinc-950 py-20 md:py-28">
         <Container>
-          <div className="grid gap-6 lg:grid-cols-3">
+          <StaggerContainer className="grid gap-6 lg:grid-cols-3">
+            <StaggerItem>
             <div className="rounded-[2rem] border border-white/10 bg-black p-8">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
                 <Ticket className="h-5 w-5 text-white/75" />
@@ -77,7 +84,9 @@ export default async function FAQPage() {
                 uncertainties before they decide to register.
               </p>
             </div>
+            </StaggerItem>
 
+            <StaggerItem>
             <div className="rounded-[2rem] border border-white/10 bg-black p-8">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
                 <ShieldCheck className="h-5 w-5 text-white/75" />
@@ -88,7 +97,9 @@ export default async function FAQPage() {
                 attendee experience from the first interaction.
               </p>
             </div>
+            </StaggerItem>
 
+            <StaggerItem>
             <div className="rounded-[2rem] border border-white/10 bg-black p-8">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
                 <Mail className="h-5 w-5 text-white/75" />
@@ -99,12 +110,14 @@ export default async function FAQPage() {
                 through the GDG community page.
               </p>
             </div>
-          </div>
+            </StaggerItem>
+          </StaggerContainer>
         </Container>
       </section>
 
       <section className="bg-black py-20 md:py-28">
         <Container>
+          <FadeIn>
           <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 md:p-12">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(66,133,244,0.16),transparent_25%),radial-gradient(circle_at_bottom_right,rgba(234,67,53,0.14),transparent_25%)]" />
 
@@ -140,6 +153,7 @@ export default async function FAQPage() {
               </div>
             </div>
           </div>
+          </FadeIn>
         </Container>
       </section>
     </>

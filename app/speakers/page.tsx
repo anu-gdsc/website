@@ -13,6 +13,8 @@ import Container from "@/components/ui/container";
 import PageHero from "@/components/layout/page-hero";
 import { getSpeakers } from "@/sanity/lib/queries";
 import Image from "next/image";
+import { FadeIn } from "@/components/motion/fade-in";
+import { StaggerContainer, StaggerItem } from "@/components/motion/stagger";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdganu.com";
 
@@ -110,8 +112,9 @@ export default async function SpeakersPage() {
       {/* Speaker cards */}
       <section className="border-b border-white/10 bg-black py-20 md:py-28">
         <Container>
-          <div className="grid gap-8 md:grid-cols-2">
+          <StaggerContainer className="grid gap-8 md:grid-cols-2">
             {speakers.map((speaker) => (
+              <StaggerItem key={speaker.name}>
               <article
                 key={speaker.name}
                 className={`rounded-[2rem] p-[2px] ${colorBorder[speaker.color]}`}
@@ -119,13 +122,13 @@ export default async function SpeakersPage() {
                 <div className="flex h-full flex-col rounded-[1.875rem] bg-black p-6 md:flex-row md:gap-7">
                   {/* Photo */}
                   <div className="shrink-0">
-                    <Image
-                      src={speaker.image}
-                      alt={`${speaker.name} — ${speaker.role} at ${speaker.company}`}
-                      width={176}
-                      height={224}
-                      className="h-56 w-full rounded-2xl object-cover md:h-full md:w-44"
-                    />
+                    {speaker.image ? (
+                      <Image src={speaker.image} alt={`${speaker.name} — ${speaker.role} at ${speaker.company}`} width={176} height={224} className="h-56 w-full rounded-2xl object-cover md:h-full md:w-44" />
+                    ) : (
+                      <div className="flex h-56 w-full items-center justify-center rounded-2xl md:h-full md:w-44" style={{ background: "rgba(255,255,255,0.05)" }}>
+                        <span className="text-3xl font-bold text-white/40">{speaker.name.split(" ").map((n: string) => n[0]).join("")}</span>
+                      </div>
+                    )}
                   </div>
 
                   {/* Info */}
@@ -162,14 +165,16 @@ export default async function SpeakersPage() {
                   </div>
                 </div>
               </article>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </Container>
       </section>
 
       {/* Sessions */}
       <section className="border-b border-white/10 bg-zinc-950 py-20 md:py-28">
         <Container>
+          <FadeIn>
           <p className="text-sm font-semibold uppercase tracking-[0.22em] text-white/55">
             Sessions
           </p>
@@ -180,9 +185,11 @@ export default async function SpeakersPage() {
             Four focused sessions spanning AI systems, cloud pragmatism, industry realities, and the
             open source ecosystem.
           </p>
+          </FadeIn>
 
-          <ol className="mt-12 space-y-4" aria-label="Event sessions">
+          <StaggerContainer className="mt-12 space-y-4">
             {speakers.map((speaker, i) => (
+              <StaggerItem key={speaker.name}>
               <li
                 key={speaker.name}
                 className="grid gap-4 rounded-2xl border border-white/10 bg-black/60 p-6 transition hover:border-white/20 sm:grid-cols-[3rem_1fr_auto]"
@@ -202,14 +209,16 @@ export default async function SpeakersPage() {
                   {speaker.category}
                 </span>
               </li>
+              </StaggerItem>
             ))}
-          </ol>
+          </StaggerContainer>
         </Container>
       </section>
 
       {/* CTA */}
       <section className="bg-black py-20 md:py-28">
         <Container>
+          <FadeIn>
           <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 md:p-12">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(66,133,244,0.16),transparent_25%),radial-gradient(circle_at_bottom_right,rgba(52,168,83,0.14),transparent_25%)]" />
             <div className="relative max-w-3xl">
@@ -242,6 +251,7 @@ export default async function SpeakersPage() {
               </div>
             </div>
           </div>
+          </FadeIn>
         </Container>
       </section>
     </>

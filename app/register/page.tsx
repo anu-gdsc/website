@@ -14,6 +14,8 @@ import {
 import Container from "@/components/ui/container";
 import SectionTitle from "@/components/ui/section-title";
 import PageHero from "@/components/layout/page-hero";
+import { FadeIn } from "@/components/motion/fade-in";
+import { StaggerContainer, StaggerItem } from "@/components/motion/stagger";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdganu.com";
 
@@ -128,6 +130,7 @@ export default function RegisterPage() {
       <section className="border-b border-white/10 bg-black py-20 md:py-28">
         <Container>
           <div className="grid gap-12 lg:grid-cols-[1fr_0.9fr] lg:items-start">
+            <FadeIn direction="right">
             <div>
               <SectionTitle
                 eyebrow="Registration overview"
@@ -171,7 +174,9 @@ export default function RegisterPage() {
                 </Link>
               </div>
             </div>
+            </FadeIn>
 
+            <FadeIn direction="left" delay={0.1}>
             <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8">
               <h3 className="text-xl font-semibold text-white">Event details</h3>
 
@@ -202,20 +207,24 @@ export default function RegisterPage() {
                 </p>
               </div>
             </div>
+            </FadeIn>
           </div>
         </Container>
       </section>
 
       <section className="border-b border-white/10 bg-zinc-950 py-20 md:py-28">
         <Container>
+          <FadeIn>
           <SectionTitle
             eyebrow="Why register"
             title="What attendees get from the experience"
             description="A day designed to be genuinely useful — practical sessions, real connections, and ideas you can act on."
           />
+          </FadeIn>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-2">
+          <StaggerContainer className="mt-12 grid gap-6 md:grid-cols-2">
             {perks.map((item) => (
+              <StaggerItem key={item}>
               <div
                 key={item}
                 className="flex items-start gap-4 rounded-3xl border border-white/10 bg-black p-6"
@@ -225,21 +234,25 @@ export default function RegisterPage() {
                 </div>
                 <p className="text-sm leading-7 text-white/70">{item}</p>
               </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </Container>
       </section>
 
       <section className="border-b border-white/10 bg-black py-20 md:py-28">
         <Container>
+          <FadeIn>
           <SectionTitle
             eyebrow="How it works"
             title="A simple registration journey"
             description="Keep the process light, clear, and easy to follow."
           />
+          </FadeIn>
 
-          <div className="mt-12 grid gap-6 md:grid-cols-3">
+          <StaggerContainer className="mt-12 grid gap-6 md:grid-cols-3">
             {steps.map((step, index) => (
+              <StaggerItem key={step.title}>
               <div
                 key={step.title}
                 className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6"
@@ -251,14 +264,16 @@ export default function RegisterPage() {
                 <h3 className="mt-5 text-xl font-semibold text-white">{step.title}</h3>
                 <p className="mt-3 text-sm leading-7 text-white/70">{step.description}</p>
               </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </Container>
       </section>
 
       <section className="border-b border-white/10 bg-zinc-950 py-20 md:py-28">
         <Container>
           <div className="grid gap-10 lg:grid-cols-2">
+            <FadeIn direction="right">
             <div className="rounded-[2rem] border border-white/10 bg-black p-8">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
                 <Users className="h-5 w-5 text-white/75" />
@@ -274,7 +289,9 @@ export default function RegisterPage() {
                 ))}
               </ul>
             </div>
+            </FadeIn>
 
+            <FadeIn direction="left" delay={0.1}>
             <div className="rounded-[2rem] border border-white/10 bg-black p-8">
               <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-white/5">
                 <Ticket className="h-5 w-5 text-white/75" />
@@ -300,31 +317,37 @@ export default function RegisterPage() {
                 </li>
               </ul>
             </div>
+            </FadeIn>
           </div>
         </Container>
       </section>
 
       <section className="border-b border-white/10 bg-black py-20 md:py-28">
         <Container>
+          <FadeIn>
           <SectionTitle
             eyebrow="Quick answers"
             title="Common questions before signing up"
             description="A compact FAQ helps remove last-minute friction and uncertainty."
           />
+          </FadeIn>
 
-          <div className="mt-12 space-y-4">
+          <StaggerContainer className="mt-12 space-y-4">
             {miniFaqs.map((faq) => (
+              <StaggerItem key={faq.q}>
               <div key={faq.q} className="rounded-3xl border border-white/10 bg-white/[0.04] p-6">
                 <h3 className="text-lg font-semibold text-white">{faq.q}</h3>
                 <p className="mt-3 text-sm leading-7 text-white/70">{faq.a}</p>
               </div>
+              </StaggerItem>
             ))}
-          </div>
+          </StaggerContainer>
         </Container>
       </section>
 
       <section className="bg-zinc-950 py-20 md:py-28">
         <Container>
+          <FadeIn>
           <div className="relative overflow-hidden rounded-[2rem] border border-white/10 bg-white/[0.04] p-8 md:p-12">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(66,133,244,0.16),transparent_25%),radial-gradient(circle_at_bottom_right,rgba(52,168,83,0.14),transparent_25%)]" />
 
@@ -360,6 +383,7 @@ export default function RegisterPage() {
               </div>
             </div>
           </div>
+          </FadeIn>
         </Container>
       </section>
     </>

@@ -1,31 +1,35 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ffffff;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-inter), system-ui, -apple-system, sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-inter), system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Google Siri orb animation */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-space), system-ui, sans-serif;
+  letter-spacing: -0.025em;
+}
+
+/* ── Siri / orb animations ─────────────────────────────── */
+
 @keyframes siri-ring-spin {
   from { transform: rotate(0deg); }
   to   { transform: rotate(360deg); }
@@ -33,7 +37,7 @@ body {
 
 @keyframes siri-pulse {
   0%, 100% { transform: scale(1); }
-  50%       { transform: scale(1.04); }
+  50%       { transform: scale(1.03); }
 }
 
 @keyframes siri-blob-blue {
@@ -113,3 +117,57 @@ body {
   filter: blur(44px);
   animation: siri-blob-green 5.5s ease-in-out infinite;
 }
+
+/* ── Eyebrow glitch flicker ─────────────────────────────── */
+
+@keyframes glitch-flicker {
+  0%, 87%, 100% {
+    opacity: 1;
+    text-shadow: none;
+    clip-path: none;
+  }
+  88% {
+    opacity: 0.85;
+    text-shadow: 2px 0 rgba(66,133,244,0.95), -2px 0 rgba(234,67,53,0.8);
+    clip-path: polygon(0 20%, 100% 20%, 100% 45%, 0 45%);
+  }
+  90% {
+    opacity: 1;
+    text-shadow: -1px 0 rgba(66,133,244,0.7), 1px 0 rgba(52,168,83,0.6);
+    clip-path: polygon(0 55%, 100% 55%, 100% 80%, 0 80%);
+  }
+  92% {
+    opacity: 0.95;
+    text-shadow: 1px 0 rgba(251,188,5,0.5);
+    clip-path: none;
+  }
+  94%, 100% { opacity: 1; text-shadow: none; clip-path: none; }
+}
+
+.glitch-flicker {
+  position: relative;
+  animation: glitch-flicker 5s ease-in-out infinite;
+}
+
+/* ── Floating chip animation ────────────────────────────── */
+
+@keyframes float-a {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes float-b {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-7px); }
+}
+
+@keyframes float-c {
+  0%, 100% { transform: translateY(0px) rotate(-1deg); }
+  50%       { transform: translateY(-12px) rotate(1deg); }
+}
+
+.float-a { animation: float-a 3.2s ease-in-out infinite; }
+.float-b { animation: float-b 4s ease-in-out infinite 0.5s; }
+.float-c { animation: float-c 3.6s ease-in-out infinite 1s; }
+.float-d { animation: float-a 4.5s ease-in-out infinite 0.8s; }
+.float-e { animation: float-b 3.8s ease-in-out infinite 0.3s; }

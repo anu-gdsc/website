@@ -1,8 +1,9 @@
 "use client";
 
 import { useEffect, useRef, useState, useCallback } from "react";
-import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { motion } from "framer-motion";
 import Container from "@/components/ui/container";
+import DinoRunner from "@/components/hero/dino-runner";
 
 // ── Constants ───────────────────────────────────────────────────────
 const SCRAMBLE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$!?<>/\\|{}[]~^&*";
@@ -20,13 +21,6 @@ const HEADLINE = [
   { word: "developers.", delay: 1.65 },
 ];
 
-const CHIPS = [
-  { label: "AI / ML",          dot: "#4285F4", cls: "float-a", left: "51%", top: "210px" },
-  { label: "#BuildWithGoogle",  dot: "#4285F4", cls: "float-e", left: "64%", top: "140px" },
-  { label: "Cloud Native",      dot: "#34A853", cls: "float-b", left: "79%", top: "200px" },
-  { label: "Open Source",       dot: "#FBBC05", cls: "float-d", left: "51%", top: "560px" },
-  { label: "Web Dev",           dot: "#EA4335", cls: "float-c", left: "77%", top: "550px" },
-];
 
 const EASE: [number, number, number, number] = [0.25, 0.46, 0.45, 0.94];
 
@@ -136,27 +130,17 @@ export default function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
   const [spotlight, setSpotlight] = useState({ x: -9999, y: -9999 });
 
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-  const springX = useSpring(mouseX, { stiffness: 45, damping: 22 });
-  const springY = useSpring(mouseY, { stiffness: 45, damping: 22 });
-  const orbX = useTransform(springX, [-1, 1], [-28, 28]);
-  const orbY = useTransform(springY, [-1, 1], [-28, 28]);
-
   useEffect(() => {
-    // Capture section origin once on mount (it doesn't scroll)
     const rect = sectionRef.current?.getBoundingClientRect();
     const sT = rect?.top ?? 0;
     const sL = rect?.left ?? 0;
 
-    const move = (e: MouseEvent) => {
+    const move = (e: MouseEvent) =>
       setSpotlight({ x: e.clientX - sL, y: e.clientY - sT });
-      mouseX.set((e.clientX / window.innerWidth - 0.5) * 2);
-      mouseY.set((e.clientY / window.innerHeight - 0.5) * 2);
-    };
+
     window.addEventListener("mousemove", move);
     return () => window.removeEventListener("mousemove", move);
-  }, [mouseX, mouseY]);
+  }, []);
 
   return (
     <section ref={sectionRef} className="relative border-b border-white/10 bg-black">
@@ -177,20 +161,6 @@ export default function Hero() {
         }}
       />
 
-      {/* ── Floating chips ─────────────────────────────────── */}
-      {CHIPS.map((chip, i) => (
-        <motion.div
-          key={chip.label}
-          className={`${chip.cls} pointer-events-none absolute z-10 hidden items-center gap-2 rounded-full border border-white/12 bg-black/65 px-3.5 py-1.5 text-xs font-medium text-white/80 backdrop-blur-md md:flex`}
-          style={{ left: chip.left, top: chip.top }}
-          initial={{ opacity: 0, scale: 0.75 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ delay: 2.4 + i * 0.12, duration: 0.45, ease: "easeOut" }}
-        >
-          <span className="h-1.5 w-1.5 shrink-0 rounded-full" style={{ background: chip.dot }} />
-          {chip.label}
-        </motion.div>
-      ))}
 
       <Container>
         <div className="relative z-[1] grid min-h-[90vh] items-center gap-14 py-24 md:grid-cols-2 md:py-32">
@@ -272,25 +242,9 @@ export default function Hero() {
             </motion.div>
           </div>
 
-          {/* ── Right: orb with stronger parallax ──────────── */}
-          <div className="flex items-center justify-center">
-            <motion.div
-              style={{ x: orbX, y: orbY }}
-              initial={{ opacity: 0, scale: 0.82 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1.0, delay: 0.15, ease: EASE }}
-              className="siri-orb-pulse relative h-[340px] w-[340px] md:h-[460px] md:w-[460px]"
-            >
-              <div className="siri-ring absolute inset-0 rounded-full" />
-              <div className="pointer-events-none absolute -inset-8 rounded-full bg-[radial-gradient(circle,rgba(66,133,244,0.12),rgba(234,67,53,0.08),transparent_70%)]" />
-              <div className="absolute inset-[2px] overflow-hidden rounded-full bg-[#030303]">
-                <div className="siri-blob siri-blob-blue" />
-                <div className="siri-blob siri-blob-red" />
-                <div className="siri-blob siri-blob-yellow" />
-                <div className="siri-blob siri-blob-green" />
-                <div className="pointer-events-none absolute inset-0 rounded-full bg-[radial-gradient(circle_at_50%_36%,rgba(255,255,255,0.08),transparent_55%)]" />
-              </div>
-            </motion.div>
+          {/* ── Right: dino runner ─────────────────────────── */}
+          <div className="hidden w-full items-center justify-center md:flex">
+            <DinoRunner />
           </div>
         </div>
       </Container>

@@ -185,190 +185,170 @@ const faqs = [
   {
     _id: "faq-01",
     _type: "faq",
-    q: "Is GDSC ANU free to attend?",
-    a: "Yes, the event is completely free for registered attendees. Spots are limited, so early registration is encouraged to secure your place.",
+    q: "What is GDSC ANU?",
+    a: "Google Developer Student Clubs ANU is a student-run community at the Australian National University. We run regular talks, workshops, and networking events covering AI, cloud, open source, and software development — bringing together students and industry practitioners throughout the year.",
     order: 1,
   },
   {
     _id: "faq-02",
     _type: "faq",
-    q: "Do I need to be an ANU student?",
-    a: "While the event is primarily organised for ANU students, all Canberra-based students and tech enthusiasts are welcome to join. The community is open to anyone with curiosity and a desire to learn.",
+    q: "Are events free to attend?",
+    a: "Yes, all GDSC ANU events are completely free. We believe access to quality technical education and industry connections shouldn't cost anything. Spots can fill up, so registering early is always a good idea.",
     order: 2,
   },
   {
     _id: "faq-03",
     _type: "faq",
-    q: "Do I need prior coding or tech experience?",
-    a: "No prior experience is required. The event is designed to be accessible to complete beginners while also offering genuine depth for more experienced attendees. There is something for everyone.",
+    q: "Do I need to be an ANU student?",
+    a: "Not at all. While we're based at ANU, our events are open to all Canberra-area students and anyone with an interest in tech. We regularly see attendees from UC, CIT, and beyond.",
     order: 3,
   },
   {
     _id: "faq-04",
     _type: "faq",
-    q: "How do I register for the event?",
-    a: "Head to the Register page on this website and click the Register Now button. Registration is handled through the Hellorubric platform and takes just a few minutes.",
+    q: "Do I need a technical background to come?",
+    a: "No. Our events are designed to be welcoming to people at every stage — whether you're in your first semester of CS, studying something completely unrelated, or already working in industry. The speakers pitch for curiosity, not credentials.",
     order: 4,
   },
   {
     _id: "faq-05",
     _type: "faq",
-    q: "What should I bring on the day?",
-    a: "A laptop is useful for the hands-on workshop sessions. Otherwise, bring yourself, a curious mindset, and something to take notes with. Everything else will be provided.",
+    q: "How do I find out about upcoming events?",
+    a: "Follow us on Instagram @gdsc.anu for announcements, speaker reveals, and event recaps. You can also register interest on this site and we'll reach out when new events go live.",
     order: 5,
   },
   {
     _id: "faq-06",
     _type: "faq",
-    q: "Will food be provided?",
-    a: "Yes — lunch and refreshments will be available for all registered attendees throughout the day, including morning and afternoon breaks.",
+    q: "How do I register for an event?",
+    a: "Each event has its own registration link shared on our Instagram and on the Hellorubric platform. Head to the Register page on this site for the current open event, or follow our socials to catch the next one when it opens.",
     order: 6,
   },
   {
     _id: "faq-07",
     _type: "faq",
-    q: "Will sessions be recorded or streamed?",
-    a: "We aim to record key sessions where speakers give their permission. Recordings and any post-event resources will be shared through GDSC ANU channels after the event.",
+    q: "Are sessions recorded?",
+    a: "We record sessions when speakers are happy for us to do so. Recaps and any available recordings get shared through our Instagram after each event — it's worth following even if you can't make it on the day.",
     order: 7,
   },
   {
     _id: "faq-08",
     _type: "faq",
-    q: "Is the venue accessible?",
-    a: "ANU has accessible facilities. If you have specific accessibility requirements, please reach out to the GDSC ANU team in advance so we can ensure a great experience for you.",
+    q: "Can I speak at a GDSC ANU event?",
+    a: "Yes — we're always interested in hearing from practitioners with something real to share. Reach out to us via Instagram or through the GDG Community platform to start a conversation. We particularly value talks grounded in hands-on experience.",
     order: 8,
   },
   {
     _id: "faq-09",
     _type: "faq",
-    q: "Can I propose a talk or workshop?",
-    a: "We are always open to community-driven session ideas. Reach out via the GDSC ANU Instagram or the GDG community page to start a conversation with the organising team.",
+    q: "How can I get involved as an organiser or volunteer?",
+    a: "We open organiser applications at the start of each ANU academic year. Keep an eye on our Instagram for announcements. If you want to get on our radar early, come to a few events and introduce yourself to the team.",
     order: 9,
   },
   {
     _id: "faq-10",
     _type: "faq",
-    q: "When will the full schedule be announced?",
-    a: "The finalised schedule, including confirmed speaker timings and session details, will be published on this website closer to the event date. Follow our Instagram for updates.",
+    q: "Is GDSC ANU officially affiliated with Google?",
+    a: "Yes. GDSC ANU is an official Google Developer Student Club, part of the global GDG (Google Developer Groups) network. We operate independently as a student committee at ANU but are supported and recognised by Google.",
     order: 10,
   },
 ];
 
 // ── Speakers ─────────────────────────────────────────────────────────────────
-// Note: Images require uploading assets via Sanity Studio.
-// Speaker cards will display initials when no image is uploaded.
+// Real confirmed speakers from the GDSC ANU speaker pipeline.
+// Add LinkedIn URLs and upload photos in Sanity Studio.
 
 const speakers = [
   {
-    _id: "speaker-01",
+    _id: "speaker-harshill",
     _type: "speaker",
-    name: "Sarah Chen",
-    role: "Senior ML Engineer",
-    company: "Google DeepMind",
-    topic: "Building Production-Ready AI Pipelines: From Prototype to Scale",
-    bio: "Sarah leads machine learning infrastructure at Google DeepMind, specialising in taking research prototypes into production systems that serve millions of users. She has a passion for developer education and making ML engineering accessible to a broader audience of builders.",
+    name: "Harshill Siyani",
+    role: "Software Engineer",
+    company: "News Corp Australia",
+    topic: "Develop Multi-Agent Systems with Google ADK",
+    bio: "Harshill is a software engineer at News Corp Australia and the founder of Siyani AI. He brought a practical, hands-on session on building multi-agent systems using Google's Agent Development Kit — breaking down how real-world agentic architectures are designed, wired together, and shipped.",
     category: "AI",
     color: "blue",
-    linkedin: "#",
     order: 1,
   },
   {
-    _id: "speaker-02",
+    _id: "speaker-anupam",
     _type: "speaker",
-    name: "Marcus Johnson",
-    role: "Cloud Architect",
-    company: "Amazon Web Services",
-    topic: "Serverless at Scale: Real Patterns from Real Systems",
-    bio: "Marcus is a cloud architect at AWS helping enterprise and startup teams design resilient, cost-effective cloud infrastructure. He has spent seven years working across serverless, event-driven, and container-native architectures — and is known for cutting through marketing speak to share what actually works.",
-    category: "Cloud",
-    color: "green",
-    linkedin: "#",
+    name: "Anupam Pattnaik",
+    role: "CEO & Co-Founder",
+    company: "CoreX",
+    topic: "The \"Human API\": Why Your University Degree is as Important as Your IDE",
+    bio: "Anupam is the CEO and co-founder of CoreX, an AI company building tools for professionals. His talk tackled the gap between what universities teach and what industry actually rewards — making the case that the soft skills and mindset you build at uni are often the real differentiator in a career.",
+    category: "Career",
+    color: "yellow",
     order: 2,
   },
   {
-    _id: "speaker-03",
+    _id: "speaker-dave-hall",
     _type: "speaker",
-    name: "Priya Patel",
-    role: "Developer Advocate",
-    company: "GitHub",
-    topic: "From Consumer to Contributor: Building Your Open Source Identity",
-    bio: "Priya works at GitHub helping developers find their footing in the open source world. She spent years making her first contributions before discovering the systems and mindset shifts that accelerated her growth. Today she helps thousands of developers navigate the same journey.",
-    category: "Open Source",
-    color: "yellow",
-    linkedin: "#",
+    name: "Dave Hall",
+    role: "Solutions Architect",
+    company: "Amazon Web Services",
+    topic: "Not Everything Needs an LLM",
+    bio: "Dave is a solutions architect at AWS with deep experience across cloud infrastructure and AI systems. His talk was a refreshing counterpoint to the AI hype cycle — a practical guide to knowing when a large language model is the right tool, and when a simpler approach will do the job better and cheaper.",
+    category: "Cloud",
+    color: "green",
     order: 3,
   },
   {
-    _id: "speaker-04",
+    _id: "speaker-lovee-jain",
     _type: "speaker",
-    name: "Dr. Emily Robertson",
-    role: "Principal Engineer",
-    company: "Red Hat",
-    topic: "Kubernetes in the Real World: What the Documentation Doesn't Tell You",
-    bio: "Emily is a principal engineer at Red Hat with over a decade of experience in container orchestration, distributed systems, and cloud-native tooling. She contributes to open standards and has spoken at KubeCon, GDG DevFest, and developer summits across APAC.",
-    category: "Cloud",
+    name: "Lovee Jain",
+    role: "Google Developer Expert",
+    company: "GDE — AI / ML",
+    topic: "Chaining MCP Servers with Gemini ADK",
+    bio: "Lovee is a Google Developer Expert in AI and ML, and one of the most active voices in the Gemini developer ecosystem. Her session went deep on chaining Model Context Protocol servers with the Gemini ADK — a practical walkthrough of how to wire up complex agentic pipelines without losing your mind.",
+    category: "AI",
     color: "blue",
-    linkedin: "#",
+    order: 4,
+  },
+  {
+    _id: "speaker-suesi-tran",
+    _type: "speaker",
+    name: "Suesi Tran",
+    role: "Google Developer Expert",
+    company: "GDE — Flutter & Dart",
+    topic: "Agentic AI in Your Flutter App",
+    bio: "Suesi is a Google Developer Expert in Flutter and Dart, and a developer passionate about bringing AI capabilities into mobile experiences. Her session showed how to integrate agentic AI patterns directly into Flutter apps — with a deep dive on the architectural decisions that make these features feel native, not bolted on.",
+    category: "AI",
+    color: "red",
     order: 5,
   },
-  {
-    _id: "speaker-05",
-    _type: "speaker",
-    name: "James Okafor",
-    role: "Lead Frontend Engineer",
-    company: "Atlassian",
-    topic: "Modern React Patterns for Teams That Actually Ship",
-    bio: "James leads frontend architecture at Atlassian, working across Jira and Confluence to build component systems that dozens of product teams rely on daily. He is passionate about design systems, accessibility, and writing frontend code that future developers will thank you for.",
-    category: "Web",
-    color: "red",
-    linkedin: "#",
-    order: 6,
-  },
-  {
-    _id: "speaker-06",
-    _type: "speaker",
-    name: "Alex Kim",
-    role: "Group Product Manager",
-    company: "Canva",
-    topic: "Breaking Into Tech: Non-Linear Paths to Roles You Actually Want",
-    bio: "Alex is a Group PM at Canva who started as a graphic design student with zero technical background. Through deliberate skill-building and community involvement, she transitioned into product management at one of Australia's most successful tech companies. She shares the honest, messy, real version of that journey.",
-    category: "Career",
-    color: "green",
-    linkedin: "#",
-    order: 7,
-  },
-  {
-    _id: "speaker-07",
-    _type: "speaker",
-    name: "Liam O'Brien",
-    role: "AI Research Engineer",
-    company: "Anthropic",
-    topic: "Multi-Agent Systems: Building AI That Works Together",
-    bio: "Liam researches multi-agent AI architectures at Anthropic, exploring how language model systems can coordinate, communicate, and solve problems collaboratively. His work sits at the intersection of AI safety and practical application — and he brings both perspectives to his talks.",
-    category: "AI",
-    color: "yellow",
-    linkedin: "#",
-    order: 8,
-  },
-  {
-    _id: "speaker-08",
-    _type: "speaker",
-    name: "Nadia Torres",
-    role: "Staff Engineer",
-    company: "Stripe",
-    topic: "API Design That Lasts: Lessons From Building Developer Infrastructure",
-    bio: "Nadia is a staff engineer at Stripe focused on the infrastructure that millions of developers build on. She has strong opinions about API design, backwards compatibility, and what it means to treat developers as first-class users. Her sessions are known for being equal parts principled and practical.",
-    category: "Web",
-    color: "red",
-    linkedin: "#",
-    order: 9,
-  },
+];
+
+// ── Team Members ──────────────────────────────────────────────────────────────
+// Placeholder names from your org chart. Replace with real names/links before running.
+// Photos can't be seeded via script — upload them in Sanity Studio.
+
+const teamMembers = [
+  // Leadership
+  { _id: "team-yuvraj",    _type: "teamMember", name: "Yuvraj",           role: "President",      department: "leadership", order: 1 },
+  { _id: "team-sam",       _type: "teamMember", name: "Sam",              role: "Secretary",      department: "leadership", order: 2 },
+  { _id: "team-ally",      _type: "teamMember", name: "Ally",             role: "Secretary",      department: "leadership", order: 3 },
+  { _id: "team-will",      _type: "teamMember", name: "Will",             role: "Treasurer",      department: "leadership", order: 4 },
+  { _id: "team-pranav",    _type: "teamMember", name: "Pranav",           role: "VP Projects",    department: "leadership", order: 5 },
+  { _id: "team-boris",     _type: "teamMember", name: "Boris",            role: "VP Projects",    department: "leadership", order: 6 },
+
+  // Operations
+  { _id: "team-marketing", _type: "teamMember", name: "Marketing Lead",   role: "Marketing",       department: "operations", order: 1 },
+  { _id: "team-pc",        _type: "teamMember", name: "P&C Lead",         role: "People & Culture",department: "operations", order: 2 },
+  { _id: "team-sponsors",  _type: "teamMember", name: "Sponsorships Lead",role: "Sponsorships",    department: "operations", order: 3 },
+  { _id: "team-events",    _type: "teamMember", name: "Events Lead",      role: "Events",          department: "operations", order: 4 },
+
+  // Projects
+  { _id: "team-pm",        _type: "teamMember", name: "Project Manager",  role: "Project Manager", department: "projects",   order: 1 },
+  { _id: "team-consult",   _type: "teamMember", name: "Consultant",       role: "Consultant",      department: "projects",   order: 2 },
 ];
 
 // ── Run ───────────────────────────────────────────────────────────────────────
 
 async function seed() {
-  const allDocs = [...tracks, ...scheduleItems, ...faqs, ...speakers];
+  const allDocs = [...tracks, ...scheduleItems, ...faqs, ...speakers, ...teamMembers];
 
   console.log(`\nSeeding ${allDocs.length} documents to ${projectId}/${dataset}...\n`);
 
@@ -383,8 +363,10 @@ async function seed() {
   console.log(`  ${tracks.length} tracks`);
   console.log(`  ${scheduleItems.length} schedule items`);
   console.log(`  ${faqs.length} FAQs`);
-  console.log(`  ${speakers.length} speakers`);
-  console.log("\nOpen Sanity Studio to upload speaker photos:");
+  console.log(`  ${speakers.length} speakers (real pipeline)`);
+
+  console.log(`  ${teamMembers.length} team members`);
+  console.log("\nOpen Sanity Studio to update names, add photos, and social links:");
   console.log(`  https://sanity.io/manage/personal/project/${projectId}\n`);
 }
 

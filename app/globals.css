@@ -28,94 +28,101 @@ h1, h2, h3, h4, h5, h6 {
   letter-spacing: -0.025em;
 }
 
-/* ── Siri / orb animations ─────────────────────────────── */
+/* ── Dino Runner ────────────────────────────────────────── */
 
-@keyframes siri-ring-spin {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
+/*
+  All play states are controlled through a single CSS custom property on
+  the scene root (.dino-scene). Toggling .running on the root makes every
+  child animation start simultaneously.
+*/
+.dino-scene {
+  --dino-play: paused;
+}
+.dino-scene.running {
+  --dino-play: running;
 }
 
-@keyframes siri-pulse {
-  0%, 100% { transform: scale(1); }
-  50%       { transform: scale(1.03); }
+/* ── Horizontal run ─────────────────────────────────────── */
+
+@keyframes dino-run-across {
+  from { left: -110px; }
+  to   { left: 100%;   }
 }
 
-@keyframes siri-blob-blue {
-  0%, 100% { transform: translate(-85%, -85%); }
-  25%       { transform: translate(-15%, -80%); }
-  50%       { transform: translate(-55%, -45%); }
-  75%       { transform: translate(-80%, -15%); }
-}
-
-@keyframes siri-blob-red {
-  0%, 100% { transform: translate(-15%, -15%); }
-  25%       { transform: translate(-80%, -20%); }
-  50%       { transform: translate(-45%, -55%); }
-  75%       { transform: translate(-20%, -85%); }
-}
-
-@keyframes siri-blob-yellow {
-  0%, 100% { transform: translate(-85%, -15%); }
-  33%       { transform: translate(-45%, -75%); }
-  66%       { transform: translate(-10%, -45%); }
-}
-
-@keyframes siri-blob-green {
-  0%, 100% { transform: translate(-15%, -85%); }
-  33%       { transform: translate(-55%, -20%); }
-  66%       { transform: translate(-80%, -55%); }
-}
-
-.siri-orb-pulse {
-  animation: siri-pulse 3.5s ease-in-out infinite;
-  will-change: transform;
-}
-
-.siri-ring {
-  background: conic-gradient(from 0deg, #4285F4, #EA4335, #FBBC05, #34A853, #4285F4);
-  animation: siri-ring-spin 6s linear infinite;
-  will-change: transform;
-}
-
-.siri-blob {
+.dino-run-wrap {
   position: absolute;
-  border-radius: 50%;
-  mix-blend-mode: screen;
-  top: 50%;
-  left: 50%;
-  will-change: transform;
+  bottom: 44px;
+  animation: dino-run-across 9s linear infinite;
+  animation-play-state: var(--dino-play);
 }
 
-.siri-blob-blue {
-  width: 60%;
-  height: 60%;
-  background: radial-gradient(circle, #4285F4 0%, #4285F466 100%);
-  filter: blur(48px);
-  animation: siri-blob-blue 7s ease-in-out infinite;
+/* ── Body bob (runs in-phase with legs for a unified stride) */
+
+@keyframes dino-bob {
+  from { transform: translateY(0px);  }
+  to   { transform: translateY(-4px); }
 }
 
-.siri-blob-red {
-  width: 55%;
-  height: 55%;
-  background: radial-gradient(circle, #EA4335 0%, #EA433566 100%);
-  filter: blur(42px);
-  animation: siri-blob-red 6s ease-in-out infinite;
+.dino-bob {
+  animation: dino-bob 0.26s steps(1) infinite alternate;
+  animation-play-state: var(--dino-play);
 }
 
-.siri-blob-yellow {
-  width: 50%;
-  height: 50%;
-  background: radial-gradient(circle, #FBBC05 0%, #FBBC0566 100%);
-  filter: blur(40px);
-  animation: siri-blob-yellow 8.5s ease-in-out infinite;
+/* ── Leg alternation ────────────────────────────────────── */
+/*
+  Both legs share the same duration as the body bob so every frame of the
+  stride is in lockstep.  `steps(1) alternate` snaps between the two
+  positions — classic pixel-art 2-frame walk cycle.
+  transform-box:fill-box makes the translate operate in SVG user space so
+  the movement is consistent regardless of the SVG scale.
+*/
+
+@keyframes dino-leg-l {
+  from { transform: translateY(0px);   }   /* foot down */
+  to   { transform: translateY(-18px); }   /* foot lifted */
 }
 
-.siri-blob-green {
-  width: 55%;
-  height: 55%;
-  background: radial-gradient(circle, #34A853 0%, #34A85366 100%);
-  filter: blur(44px);
-  animation: siri-blob-green 5.5s ease-in-out infinite;
+@keyframes dino-leg-r {
+  from { transform: translateY(-18px); }   /* foot lifted */
+  to   { transform: translateY(0px);   }   /* foot down */
+}
+
+.dino-leg-l,
+.dino-leg-r {
+  transform-box:    fill-box;
+  transform-origin: 50% 0%;
+}
+
+.dino-leg-l.running {
+  animation: dino-leg-l 0.26s steps(1) infinite alternate;
+  animation-play-state: var(--dino-play);
+}
+
+.dino-leg-r.running {
+  animation: dino-leg-r 0.26s steps(1) infinite alternate;
+  animation-play-state: var(--dino-play);
+}
+
+/* ── Scrolling dashed ground ────────────────────────────── */
+
+@keyframes dino-ground-scroll {
+  from { background-position: 0 0;     }
+  to   { background-position: -22px 0; }
+}
+
+.dino-ground {
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.20) 0px,
+    rgba(255, 255, 255, 0.20) 10px,
+    transparent 10px,
+    transparent 22px
+  );
+  animation: dino-ground-scroll 0.28s linear infinite;
+  animation-play-state: var(--dino-play);
 }
 
 /* ── Eyebrow glitch flicker ─────────────────────────────── */
@@ -149,25 +156,3 @@ h1, h2, h3, h4, h5, h6 {
   animation: glitch-flicker 5s ease-in-out infinite;
 }
 
-/* ── Floating chip animation ────────────────────────────── */
-
-@keyframes float-a {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-10px); }
-}
-
-@keyframes float-b {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-7px); }
-}
-
-@keyframes float-c {
-  0%, 100% { transform: translateY(0px) rotate(-1deg); }
-  50%       { transform: translateY(-12px) rotate(1deg); }
-}
-
-.float-a { animation: float-a 3.2s ease-in-out infinite; }
-.float-b { animation: float-b 4s ease-in-out infinite 0.5s; }
-.float-c { animation: float-c 3.6s ease-in-out infinite 1s; }
-.float-d { animation: float-a 4.5s ease-in-out infinite 0.8s; }
-.float-e { animation: float-b 3.8s ease-in-out infinite 0.3s; }

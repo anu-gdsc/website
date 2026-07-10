@@ -61,3 +61,16 @@ export async function getTracks() {
     return [];
   }
 }
+
+export async function getTeamMembers() {
+  try {
+    return await client.fetch(
+      `*[_type == "teamMember"] | order(order asc) {
+        name, role, department, github, linkedin,
+        "image": image.asset->url
+      }`
+    );
+  } catch {
+    return [];
+  }
+}

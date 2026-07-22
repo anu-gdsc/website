@@ -28,7 +28,7 @@ const breadcrumbSchema = {
     {
       "@type": "ListItem",
       position: 1,
-      name: "GDSC ANU",
+      name: "GDG ANU",
       item: siteUrl,
     },
   ],

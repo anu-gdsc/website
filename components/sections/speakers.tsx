@@ -44,7 +44,7 @@ export default function Speakers({ speakers }: { speakers: Speaker[] }) {
           />
         </motion.div>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
           {speakers.map((speaker, i) => (
             <motion.div
               key={speaker.name}
@@ -69,7 +69,7 @@ export default function Speakers({ speakers }: { speakers: Speaker[] }) {
                 )}
                 <div className="mt-5">
                   <h3 className="text-lg font-semibold">{speaker.name}</h3>
-                  <p className="mt-1 text-sm text-white/60">{speaker.topic}</p>
+                  <p className="mt-1 line-clamp-2 text-sm text-white/60">{speaker.topic}</p>
                 </div>
               </div>
             </motion.div>

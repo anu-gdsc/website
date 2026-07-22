@@ -29,7 +29,7 @@ export default function About() {
             <SectionTitle
               eyebrow="About"
               title="A student-led developer event designed for builders."
-              description="GDSC ANU brings together students, developers, designers, and builders for a day of ideas, practical learning, and community. Expect engaging talks, technical workshops, product thinking, and real conversations with peers and industry speakers."
+              description="GDG ANU brings together students, developers, designers, and builders for a day of ideas, practical learning, and community. Expect engaging talks, technical workshops, product thinking, and real conversations with peers and industry speakers."
             />
           </motion.div>
 

@@ -14,17 +14,17 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdganu.com";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn about GDSC ANU 2026 — a student-led developer event at the Australian National University.",
+    "Learn about GDG ANU 2026 — a student-led developer event at the Australian National University.",
   alternates: { canonical: `${siteUrl}/about` },
   openGraph: {
-    title: "About | GDSC ANU 2026",
+    title: "About | GDG ANU 2026",
     description: "A student-led developer event at ANU Canberra, October 2026.",
     url: `${siteUrl}/about`,
-    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "About GDSC ANU 2026" }],
+    images: [{ url: "/og-image.png", width: 1200, height: 630, alt: "About GDG ANU 2026" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "About | GDSC ANU 2026",
+    title: "About | GDG ANU 2026",
     description: "A student-led developer event at ANU Canberra, October 2026.",
     images: ["/og-image.png"],
   },
@@ -54,7 +54,7 @@ export default async function AboutPage() {
       <PageHero
         eyebrow="About"
         title="A student-led dev event built for builders."
-        description="GDSC ANU brings together students, developers, and designers for a day of talks, workshops, and real community — all on campus."
+        description="GDG ANU brings together students, developers, and designers for a day of talks, workshops, and real community — all on campus."
       />
 
       {/* ── Snapshot + Pillars ────────────────────────────── */}

@@ -15,29 +15,29 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdganu.com";
 export const metadata: Metadata = {
   title: "FAQ",
   description:
-    "Answers to common questions about GDSC ANU 2026 — registration, attendance, what to expect, logistics, and more. ANU Canberra, October 2026.",
+    "Answers to common questions about GDG ANU 2026 — registration, attendance, what to expect, logistics, and more. ANU Canberra, October 2026.",
   alternates: {
     canonical: `${siteUrl}/faq`,
   },
   openGraph: {
-    title: "FAQ | GDSC ANU 2026",
+    title: "FAQ | GDG ANU 2026",
     description:
-      "Everything you need to know before attending GDSC ANU 2026 — registration, schedule, logistics, and more.",
+      "Everything you need to know before attending GDG ANU 2026 — registration, schedule, logistics, and more.",
     url: `${siteUrl}/faq`,
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "GDSC ANU 2026 FAQ",
+        alt: "GDG ANU 2026 FAQ",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "FAQ | GDSC ANU 2026",
+    title: "FAQ | GDG ANU 2026",
     description:
-      "Common questions about GDSC ANU 2026 — registration, schedule, logistics, and more.",
+      "Common questions about GDG ANU 2026 — registration, schedule, logistics, and more.",
     images: ["/og-image.png"],
   },
 };
@@ -106,7 +106,7 @@ export default async function FAQPage() {
               </div>
               <h3 className="mt-5 text-xl font-semibold text-white">Reach us directly</h3>
               <p className="mt-3 text-sm leading-7 text-white/70">
-                For anything not covered here, reach out to the GDSC ANU team on Instagram or
+                For anything not covered here, reach out to the GDG ANU team on Instagram or
                 through the GDG community page.
               </p>
             </div>

@@ -40,7 +40,7 @@ export default function RegisterCTA() {
               transition={{ duration: 0.6, delay: 0.25, ease }}
               className="mt-3 text-3xl font-bold md:text-5xl"
             >
-              Be part of the GDSC ANU experience.
+              Be part of the GDG ANU experience.
             </motion.h2>
 
             <motion.p

@@ -20,21 +20,26 @@ const inter = Inter({
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdganu.com";
 
-const title = "GDSC ANU — Build, Learn & Connect | October 2026, Canberra";
+const title = "GDG ANU — Build, Learn & Connect | October 2026, Canberra";
 const description =
-  "Join Google Developer Student Club ANU for a flagship developer event in Canberra. Talks, workshops, networking and hands-on sessions across AI, cloud, web and product innovation. ANU Campus, October 2026.";
+  "Join Google Developer Group ANU for a flagship developer event in Canberra. Talks, workshops, networking and hands-on sessions across AI, cloud, web and product innovation. ANU Campus, October 2026.";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
 
   title: {
     default: title,
-    template: "%s | GDSC ANU",
+    template: "%s | GDG ANU",
   },
   description,
+  icons: {
+    icon: "/logo.svg",
+    shortcut: "/logo.svg",
+    apple: "/logo.svg",
+  },
   keywords: [
-    "GDSC ANU",
-    "Google Developer Student Club ANU",
+    "GDG ANU",
+    "Google Developer Group ANU",
     "developer event Canberra 2026",
     "GDG ANU",
     "Australian National University tech event",
@@ -47,18 +52,18 @@ export const metadata: Metadata = {
     "Google developers Australia",
     "software engineering ANU",
     "product innovation workshop",
-    "GDSC event 2026",
+    "GDG event 2026",
   ],
-  authors: [{ name: "GDSC ANU", url: siteUrl }],
-  creator: "GDSC ANU",
-  publisher: "Google Developer Student Club ANU",
+  authors: [{ name: "GDG ANU", url: siteUrl }],
+  creator: "GDG ANU",
+  publisher: "Google Developer Group ANU",
   category: "technology",
 
   openGraph: {
     type: "website",
     locale: "en_AU",
     url: siteUrl,
-    siteName: "GDSC ANU",
+    siteName: "GDG ANU",
     title,
     description,
     images: [
@@ -66,7 +71,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "GDSC ANU — Developer Event, October 2026, ANU Canberra",
+        alt: "GDG ANU — Developer Event, October 2026, ANU Canberra",
         type: "image/png",
       },
     ],
@@ -101,8 +106,8 @@ export const metadata: Metadata = {
 const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "Google Developer Student Club ANU",
-  alternateName: "GDSC ANU",
+  name: "Google Developer Group ANU",
+  alternateName: "GDG ANU",
   url: siteUrl,
   logo: `${siteUrl}/og-image.png`,
   sameAs: [
@@ -126,7 +131,7 @@ const organizationSchema = {
 const eventSchema = {
   "@context": "https://schema.org",
   "@type": "Event",
-  name: "GDSC ANU Developer Event 2026",
+  name: "GDG ANU Developer Event 2026",
   description,
   url: siteUrl,
   startDate: "2026-10-01",
@@ -148,7 +153,7 @@ const eventSchema = {
   },
   organizer: {
     "@type": "Organization",
-    name: "Google Developer Student Club ANU",
+    name: "Google Developer Group ANU",
     url: siteUrl,
   },
   offers: {

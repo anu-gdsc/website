@@ -5,11 +5,14 @@ export default function Footer() {
         <footer className="border-t border-white/10 bg-black">
             <Container>
                 <div className="flex flex-col gap-6 py-10 md:flex-row md:items-center md:justify-between">
-                    <div>
-                        <p className="text-lg font-semibold">GDSC ANU</p>
-                        <p className="mt-2 text-sm text-white/60">
-                            Building, learning, and connecting student developers at ANU.
-                        </p>
+                    <div className="flex items-center gap-3">
+                        <img src="/logo.svg" alt="GDG ANU" className="h-9 w-9" />
+                        <div>
+                            <p className="text-base font-semibold">GDG ANU</p>
+                            <p className="mt-1 text-sm text-white/60">
+                                Building, learning, and connecting student developers at ANU.
+                            </p>
+                        </div>
                     </div>
 
                     <div className="flex gap-6 text-sm text-white/70">

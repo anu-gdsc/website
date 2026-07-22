@@ -7,29 +7,29 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdganu.com";
 export const metadata: Metadata = {
   title: "Schedule",
   description:
-    "Explore the GDSC ANU 2026 event schedule — keynotes, talks, hands-on workshops, networking, and community sessions across a full day at ANU Canberra, October 2026.",
+    "Explore the GDG ANU 2026 event schedule — keynotes, talks, hands-on workshops, networking, and community sessions across a full day at ANU Canberra, October 2026.",
   alternates: {
     canonical: `${siteUrl}/schedule`,
   },
   openGraph: {
-    title: "Schedule | GDSC ANU 2026",
+    title: "Schedule | GDG ANU 2026",
     description:
-      "A full day of keynotes, talks, workshops, and community moments at GDSC ANU 2026, ANU Canberra, October 2026.",
+      "A full day of keynotes, talks, workshops, and community moments at GDG ANU 2026, ANU Canberra, October 2026.",
     url: `${siteUrl}/schedule`,
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "GDSC ANU 2026 Schedule",
+        alt: "GDG ANU 2026 Schedule",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Schedule | GDSC ANU 2026",
+    title: "Schedule | GDG ANU 2026",
     description:
-      "GDSC ANU 2026 event schedule — keynotes, workshops, networking, and community sessions at ANU Canberra.",
+      "GDG ANU 2026 event schedule — keynotes, workshops, networking, and community sessions at ANU Canberra.",
     images: ["/og-image.png"],
   },
 };

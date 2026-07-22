@@ -22,29 +22,29 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdganu.com";
 export const metadata: Metadata = {
   title: "Register",
   description:
-    "Register for GDSC ANU 2026 — a flagship student developer event at ANU Canberra, October 2026. Secure your spot for talks, workshops, and networking across AI, cloud, web, and product.",
+    "Register for GDG ANU 2026 — a flagship student developer event at ANU Canberra, October 2026. Secure your spot for talks, workshops, and networking across AI, cloud, web, and product.",
   alternates: {
     canonical: `${siteUrl}/register`,
   },
   openGraph: {
-    title: "Register | GDSC ANU 2026",
+    title: "Register | GDG ANU 2026",
     description:
-      "Secure your spot at GDSC ANU 2026 — talks, workshops, and networking across AI, cloud, web, and product. ANU Canberra, October 2026.",
+      "Secure your spot at GDG ANU 2026 — talks, workshops, and networking across AI, cloud, web, and product. ANU Canberra, October 2026.",
     url: `${siteUrl}/register`,
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "GDSC ANU 2026 Register",
+        alt: "GDG ANU 2026 Register",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Register | GDSC ANU 2026",
+    title: "Register | GDG ANU 2026",
     description:
-      "Register for GDSC ANU 2026 and secure your spot at ANU Canberra, October 2026.",
+      "Register for GDG ANU 2026 and secure your spot at ANU Canberra, October 2026.",
     images: ["/og-image.png"],
   },
 };
@@ -96,7 +96,7 @@ const attendeeFit = [
   "Students interested in software, product, AI, design, cloud, or startups",
   "Beginners looking for an accessible entry point into the tech community",
   "Builders who want practical exposure, networking, and collaboration",
-  "Students excited to learn from speakers and engage with the GDSC ANU chapter",
+  "Students excited to learn from speakers and engage with the GDG ANU chapter",
 ];
 
 const miniFaqs = [
@@ -123,7 +123,7 @@ export default function RegisterPage() {
     <>
       <PageHero
         eyebrow="Register"
-        title="Join the GDSC ANU event and secure your place early."
+        title="Join the GDG ANU event and secure your place early."
         description="Everything attendees need before signing up, from event details and expectations to registration flow and common questions."
       />
 
@@ -140,7 +140,7 @@ export default function RegisterPage() {
 
               <div className="mt-8 space-y-5 text-sm leading-7 text-white/70 md:text-base">
                 <p>
-                  GDSC ANU is designed for students who want more than just a passive event
+                  GDG ANU is designed for students who want more than just a passive event
                   experience. The focus is on practical exposure, relevant ideas, and a strong
                   sense of community throughout the day.
                 </p>

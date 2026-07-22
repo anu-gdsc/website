@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import { motion } from "framer-motion";
 
-const GDSC = ["#4285F4", "#34A853", "#FBBC05", "#EA4335"];
+const GDG_COLORS = ["#4285F4", "#34A853", "#FBBC05", "#EA4335"];
 
 // 4 domains evenly spread — no #BuildWithGoogle
 const DOMAINS = [
@@ -117,7 +117,7 @@ export default function DinoRunner() {
           // Dino entering the active window → light up box + colour dino
           if (!approached.has(i) && dinoCenter >= labelX - ACTIVE_RADIUS) {
             approached.add(i);
-            setColorIdx(i % GDSC.length);
+            setColorIdx(i % GDG_COLORS.length);
             setActiveDomain(i);
           }
 
@@ -143,7 +143,7 @@ export default function DinoRunner() {
     };
   }, []);
 
-  const dinoColor = GDSC[colorIdx];
+  const dinoColor = GDG_COLORS[colorIdx];
   const runCls    = running ? "running" : "";
 
   return (

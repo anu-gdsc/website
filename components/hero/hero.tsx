@@ -175,7 +175,7 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.08 }}
               className="glitch-flicker mb-5 text-sm font-semibold uppercase tracking-[0.22em] text-white/50"
             >
-              Google Developer Student Club • ANU
+              Google Developer Group • ANU
             </motion.p>
 
             {/* H1 — character-scramble per word */}
@@ -192,7 +192,7 @@ export default function Hero() {
               transition={{ duration: 0.65, delay: 2.0, ease: EASE }}
               className="mt-6 max-w-xl text-lg leading-8 text-white/65"
             >
-              Join GDSC ANU for a flagship community event featuring talks,
+              Join GDG ANU for a flagship community event featuring talks,
               workshops, networking, and hands-on sessions across AI, cloud, web,
               and product innovation.
             </motion.p>

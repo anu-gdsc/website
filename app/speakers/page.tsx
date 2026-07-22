@@ -21,29 +21,29 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdganu.com";
 export const metadata: Metadata = {
   title: "Speakers",
   description:
-    "Meet the speakers at GDSC ANU 2026. Industry leaders from Google, Red Hat, and AWS covering AI, multiagent systems, cloud engineering, career development, and open source — at ANU Canberra, October 2026.",
+    "Meet the speakers at GDG ANU 2026. Industry leaders from Google, Red Hat, and AWS covering AI, multiagent systems, cloud engineering, career development, and open source — at ANU Canberra, October 2026.",
   alternates: {
     canonical: `${siteUrl}/speakers`,
   },
   openGraph: {
-    title: "Speakers | GDSC ANU 2026",
+    title: "Speakers | GDG ANU 2026",
     description:
-      "Harshil Siyani, Anupam Phogat, Dave Hall, Paul Wayper and more — industry voices covering AI, cloud, open source and career growth at GDSC ANU, October 2026.",
+      "Harshil Siyani, Anupam Phogat, Dave Hall, Paul Wayper and more — industry voices covering AI, cloud, open source and career growth at GDG ANU, October 2026.",
     url: `${siteUrl}/speakers`,
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "GDSC ANU 2026 Speakers",
+        alt: "GDG ANU 2026 Speakers",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Speakers | GDSC ANU 2026",
+    title: "Speakers | GDG ANU 2026",
     description:
-      "Meet the speakers at GDSC ANU — AI, cloud, open source, and career sessions at ANU Canberra, October 2026.",
+      "Meet the speakers at GDG ANU — AI, cloud, open source, and career sessions at ANU Canberra, October 2026.",
     images: ["/og-image.png"],
   },
 };
@@ -80,7 +80,7 @@ export default async function SpeakersPage() {
   const speakerListSchema = {
     "@context": "https://schema.org",
     "@type": "ItemList",
-    name: "GDSC ANU 2026 Speakers",
+    name: "GDG ANU 2026 Speakers",
     url: `${siteUrl}/speakers`,
     numberOfItems: speakers.length,
     itemListElement: speakers.map((speaker, i) => ({
@@ -105,7 +105,7 @@ export default async function SpeakersPage() {
 
       <PageHero
         eyebrow="Speakers"
-        title="The people shaping GDSC ANU 2026."
+        title="The people shaping GDG ANU 2026."
         description="Engineers, architects, and practitioners from Google, Red Hat, and the AWS community — covering AI, cloud, open source, and the real skills that matter after graduation."
       />
 
@@ -229,7 +229,7 @@ export default async function SpeakersPage() {
                 Hear them speak in person.
               </h2>
               <p className="mt-4 text-base leading-7 text-white/70 md:text-lg">
-                Register now to secure your spot at GDSC ANU 2026 and get direct access to these
+                Register now to secure your spot at GDG ANU 2026 and get direct access to these
                 sessions, workshops, and the people behind them.
               </p>
               <div className="mt-8 flex flex-wrap gap-4">

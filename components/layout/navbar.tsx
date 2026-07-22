@@ -33,12 +33,10 @@ export default function Navbar() {
         >
             <nav className="mx-auto flex h-20 max-w-7xl items-center justify-between px-5 md:px-8">
                 <Link href="/" className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-white text-black font-bold">
-                        G
-                    </div>
+                    <img src="/logo.svg" alt="GDG ANU" className="h-10 w-10 object-contain" />
                     <div>
-                        <p className="text-xs text-white/60">Google Developer Student Club</p>
-                        <p className="text-sm font-semibold md:text-base">GDSC ANU</p>
+                        <p className="text-xs text-white/60">Google Developer Group</p>
+                        <p className="text-sm font-semibold md:text-base">GDG ANU</p>
                     </div>
                 </Link>
 

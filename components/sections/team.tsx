@@ -163,7 +163,7 @@ export default function Team({ members }: { members: TeamMember[] }) {
             The Team
           </p>
           <h2 className="text-3xl font-bold leading-tight text-white md:text-4xl">
-            The people behind GDSC ANU
+            The people behind GDG ANU
           </h2>
           <p className="mt-4 text-base leading-7 text-white/55">
             A student-run committee that plans, builds, and runs everything you see.

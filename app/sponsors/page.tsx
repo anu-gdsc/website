@@ -12,29 +12,29 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdganu.com";
 export const metadata: Metadata = {
   title: "Sponsors & Partners",
   description:
-    "Meet the sponsors and partners backing GDSC ANU 2026. Partner with us to connect with student developers and the tech community at ANU Canberra, October 2026.",
+    "Meet the sponsors and partners backing GDG ANU 2026. Partner with us to connect with student developers and the tech community at ANU Canberra, October 2026.",
   alternates: {
     canonical: `${siteUrl}/sponsors`,
   },
   openGraph: {
-    title: "Sponsors & Partners | GDSC ANU 2026",
+    title: "Sponsors & Partners | GDG ANU 2026",
     description:
-      "The sponsors and partners powering GDSC ANU 2026. Connect with student developers and the tech community at ANU Canberra.",
+      "The sponsors and partners powering GDG ANU 2026. Connect with student developers and the tech community at ANU Canberra.",
     url: `${siteUrl}/sponsors`,
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "GDSC ANU 2026 Sponsors & Partners",
+        alt: "GDG ANU 2026 Sponsors & Partners",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Sponsors & Partners | GDSC ANU 2026",
+    title: "Sponsors & Partners | GDG ANU 2026",
     description:
-      "Partners backing GDSC ANU 2026 — connect with student developers at ANU Canberra, October 2026.",
+      "Partners backing GDG ANU 2026 — connect with student developers at ANU Canberra, October 2026.",
     images: ["/og-image.png"],
   },
 };
@@ -104,7 +104,7 @@ const currentPartners: Sponsor[] = [
 const partnerListSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
-  name: "GDSC ANU 2026 Sponsors & Partners",
+  name: "GDG ANU 2026 Sponsors & Partners",
   url: `${siteUrl}/sponsors`,
   numberOfItems: 2,
   itemListElement: [
@@ -115,7 +115,7 @@ const partnerListSchema = {
         "@type": "Organization",
         name: "Google",
         url: "https://about.google",
-        description: "Title Partner of GDSC ANU 2026",
+        description: "Title Partner of GDG ANU 2026",
       },
     },
     {
@@ -125,7 +125,7 @@ const partnerListSchema = {
         "@type": "Organization",
         name: "Australian National University",
         url: "https://www.anu.edu.au",
-        description: "Institutional Partner of GDSC ANU 2026",
+        description: "Institutional Partner of GDG ANU 2026",
         address: {
           "@type": "PostalAddress",
           addressLocality: "Canberra",
@@ -187,7 +187,7 @@ export default function SponsorsPage() {
       <PageHero
         eyebrow="Sponsors & Partners"
         title="Backed by institutions, communities, and ecosystem partners."
-        description="The organisations, institutions, and communities backing GDSC ANU 2026 — helping create a student event that's practical, high-quality, and built to last."
+        description="The organisations, institutions, and communities backing GDG ANU 2026 — helping create a student event that's practical, high-quality, and built to last."
       />
 
       <section className="border-b border-white/10 bg-black py-20 md:py-28">
@@ -203,7 +203,7 @@ export default function SponsorsPage() {
 
               <div className="mt-8 space-y-5 text-sm leading-7 text-white/70 md:text-base">
                 <p>
-                  GDSC ANU is designed to bring together students, developers, designers, and
+                  GDG ANU is designed to bring together students, developers, designers, and
                   builders through an event experience centred on practical learning, real
                   conversations, and community momentum.
                 </p>

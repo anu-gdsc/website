@@ -32,6 +32,12 @@ export const teamMember = defineType({
       },
     }),
     defineField({
+      name: "subTeam",
+      title: "Sub-team",
+      type: "string",
+      description: "Optional — e.g. Events, Marketing, P&C, Sponsorships. Shown as a badge on the card.",
+    }),
+    defineField({
       name: "image",
       title: "Photo",
       type: "image",

@@ -66,7 +66,7 @@ export async function getTeamMembers() {
   try {
     return await client.fetch(
       `*[_type == "teamMember"] | order(order asc) {
-        name, role, department, github, linkedin,
+        name, role, department, subTeam, github, linkedin,
         "image": image.asset->url
       }`
     );

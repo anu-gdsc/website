@@ -8,6 +8,7 @@ export interface TeamMember {
   name:       string;
   role:       string;
   department: "leadership" | "operations" | "projects";
+  subTeam?:   string | null;
   image?:     string | null;
   github?:    string | null;
   linkedin?:  string | null;
@@ -65,6 +66,14 @@ function MemberCard({ member, color, index }: { member: TeamMember; color: strin
       </div>
       <p className="mt-2 text-xs font-semibold leading-tight text-white">{member.name}</p>
       <p className="mt-0.5 text-[11px] leading-snug text-white/40">{member.role}</p>
+      {member.subTeam && (
+        <span
+          className="mt-1.5 rounded-full px-2 py-0.5 text-[10px] font-medium"
+          style={{ background: `${color}18`, color: `${color}cc` }}
+        >
+          {member.subTeam}
+        </span>
+      )}
       {hasSocial && (
         <div className="mt-2 flex items-center justify-center gap-1.5">
           {member.github && (
@@ -138,26 +147,25 @@ function DeptBox({
   );
 }
 
-// ── Org connectors (desktop only) ─────────────────────────────────────────
-function OrgConnectors({ hasOps, hasProj }: { hasOps: boolean; hasProj: boolean }) {
-  const both = hasOps && hasProj;
+// ── Connectors ─────────────────────────────────────────────────────────────
+function VLine({ className = "" }: { className?: string }) {
+  return <div aria-hidden="true" className={`mx-auto w-px bg-white/10 ${className}`} />;
+}
+
+function BranchConnector({ hasLeft, hasRight }: { hasLeft: boolean; hasRight: boolean }) {
+  const both = hasLeft && hasRight;
   return (
-    <div aria-hidden="true" className="relative hidden h-16 w-full md:block">
-      {/* Vertical down from leadership */}
-      <div className="absolute left-1/2 top-0 h-8 w-px -translate-x-px bg-white/10" />
+    <div aria-hidden="true" className="relative hidden h-14 w-full md:block">
+      <div className="absolute left-1/2 top-0 h-7 w-px -translate-x-px bg-white/10" />
       {both && (
         <>
-          {/* Horizontal crossbar */}
-          <div className="absolute left-[25%] right-[25%] top-8 h-px bg-white/10" />
-          {/* Left drop to Operations */}
-          <div className="absolute left-[25%] top-8 h-8 w-px -translate-x-px bg-white/10" />
-          {/* Right drop to Projects */}
-          <div className="absolute right-[25%] top-8 h-8 w-px translate-x-px bg-white/10" />
+          <div className="absolute left-[25%] right-[25%] top-7 h-px bg-white/10" />
+          <div className="absolute left-[25%] top-7 h-7 w-px -translate-x-px bg-white/10" />
+          <div className="absolute right-[25%] top-7 h-7 w-px translate-x-px bg-white/10" />
         </>
       )}
       {!both && (
-        /* Single drop when only one sub-dept */
-        <div className="absolute left-1/2 top-8 h-8 w-px -translate-x-px bg-white/10" />
+        <div className="absolute left-1/2 top-7 h-7 w-px -translate-x-px bg-white/10" />
       )}
     </div>
   );
@@ -169,6 +177,10 @@ export default function Team({ members }: { members: TeamMember[] }) {
   const operations = members.filter(m => m.department === "operations");
   const projects   = members.filter(m => m.department === "projects");
   const hasSubDepts = operations.length > 0 || projects.length > 0;
+
+  // President sits alone at the top; everyone else is tier 2
+  const president = leadership.find(m => m.role === "President") ?? leadership[0] ?? null;
+  const tier2     = leadership.filter(m => m !== president);
 
   return (
     <section id="team" className="border-b border-white/10 bg-zinc-950 py-20 md:py-28">
@@ -197,40 +209,53 @@ export default function Team({ members }: { members: TeamMember[] }) {
         ) : (
           <div className="flex flex-col items-center">
 
-            {/* ── Leadership row ─────────────────────────── */}
-            {leadership.length > 0 && (
+            {/* ── Tier 1: President ──────────────────────── */}
+            {president && (
               <motion.div
-                initial={{ opacity: 0, y: 24 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, ease: EASE }}
+                transition={{ duration: 0.45, ease: EASE }}
+                className="w-28 sm:w-32"
+              >
+                <MemberCard member={president} color={DEPTS.leadership.color} index={0} />
+              </motion.div>
+            )}
+
+            {/* President → Tier 2 connector */}
+            {president && tier2.length > 0 && (
+              <VLine className="h-6" />
+            )}
+
+            {/* ── Tier 2: Direct reports ─────────────────── */}
+            {tier2.length > 0 && (
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-60px" }}
+                transition={{ duration: 0.5, delay: 0.08, ease: EASE }}
                 className="w-full"
               >
                 <div className="mb-4 flex items-center gap-2">
-                  <span
-                    className="block h-3.5 w-0.5 rounded-full"
-                    style={{ background: DEPTS.leadership.color }}
-                  />
-                  <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">
-                    Leadership
-                  </span>
-                  <span className="text-[11px] text-white/20">{leadership.length}</span>
+                  <span className="block h-3.5 w-0.5 rounded-full" style={{ background: DEPTS.leadership.color }} />
+                  <span className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/45">Leadership</span>
+                  <span className="text-[11px] text-white/20">{tier2.length}</span>
                 </div>
                 <div className="flex flex-wrap justify-center gap-2">
-                  {leadership.map((m, i) => (
+                  {tier2.map((m, i) => (
                     <div key={m.name} className="w-28 shrink-0 sm:w-32">
-                      <MemberCard member={m} color={DEPTS.leadership.color} index={i} />
+                      <MemberCard member={m} color={DEPTS.leadership.color} index={i + 1} />
                     </div>
                   ))}
                 </div>
               </motion.div>
             )}
 
-            {/* ── Connector lines ─────────────────────────── */}
-            {leadership.length > 0 && hasSubDepts && (
-              <OrgConnectors
-                hasOps={operations.length > 0}
-                hasProj={projects.length > 0}
+            {/* Tier 2 → Sub-depts connector */}
+            {(tier2.length > 0 || president) && hasSubDepts && (
+              <BranchConnector
+                hasLeft={operations.length > 0}
+                hasRight={projects.length > 0}
               />
             )}
 
@@ -241,18 +266,8 @@ export default function Team({ members }: { members: TeamMember[] }) {
                   ? "grid md:grid-cols-2"
                   : "flex justify-center"
               }`}>
-                <DeptBox
-                  dept="Operations"
-                  members={operations}
-                  color={DEPTS.operations.color}
-                  delay={0.1}
-                />
-                <DeptBox
-                  dept="Projects"
-                  members={projects}
-                  color={DEPTS.projects.color}
-                  delay={0.18}
-                />
+                <DeptBox dept="Operations" members={operations} color={DEPTS.operations.color} delay={0.1} />
+                <DeptBox dept="Projects"   members={projects}   color={DEPTS.projects.color}   delay={0.18} />
               </div>
             )}
           </div>

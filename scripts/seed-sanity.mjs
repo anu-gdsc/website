@@ -322,27 +322,24 @@ const speakers = [
 ];
 
 // ── Team Members ──────────────────────────────────────────────────────────────
-// Placeholder names from your org chart. Replace with real names/links before running.
-// Photos can't be seeded via script — upload them in Sanity Studio.
+// Real names from the org chart. Photos must be uploaded in Sanity Studio.
 
 const teamMembers = [
-  // Leadership
-  { _id: "team-yuvraj",    _type: "teamMember", name: "Yuvraj",           role: "President",      department: "leadership", order: 1 },
-  { _id: "team-sam",       _type: "teamMember", name: "Sam",              role: "Secretary",      department: "leadership", order: 2 },
-  { _id: "team-ally",      _type: "teamMember", name: "Ally",             role: "Secretary",      department: "leadership", order: 3 },
-  { _id: "team-will",      _type: "teamMember", name: "Will",             role: "Treasurer",      department: "leadership", order: 4 },
-  { _id: "team-pranav",    _type: "teamMember", name: "Pranav",           role: "VP Projects",    department: "leadership", order: 5 },
-  { _id: "team-boris",     _type: "teamMember", name: "Boris",            role: "VP Projects",    department: "leadership", order: 6 },
+  // ── Leadership ────────────────────────────────────────────────────────────
+  { _id: "team-yuvraj",  _type: "teamMember", name: "Yuvraj",   role: "President",      department: "leadership", order: 1 },
+  { _id: "team-sam",     _type: "teamMember", name: "Sam",      role: "VP Operations",  department: "leadership", order: 2 },
+  { _id: "team-aleeyah", _type: "teamMember", name: "Aleeyah",  role: "Secretary",      department: "leadership", order: 3 },
+  { _id: "team-junjun",  _type: "teamMember", name: "Junjun",   role: "Treasurer",      department: "leadership", order: 4 },
+  { _id: "team-boris",   _type: "teamMember", name: "Boris",    role: "VP Projects",    department: "leadership", order: 5 },
 
-  // Operations
-  { _id: "team-marketing", _type: "teamMember", name: "Marketing Lead",   role: "Marketing",       department: "operations", order: 1 },
-  { _id: "team-pc",        _type: "teamMember", name: "P&C Lead",         role: "People & Culture",department: "operations", order: 2 },
-  { _id: "team-sponsors",  _type: "teamMember", name: "Sponsorships Lead",role: "Sponsorships",    department: "operations", order: 3 },
-  { _id: "team-events",    _type: "teamMember", name: "Events Lead",      role: "Events",          department: "operations", order: 4 },
+  // ── Operations ────────────────────────────────────────────────────────────
+  { _id: "team-luc",     _type: "teamMember", name: "Luc",      role: "Events Lead",        subTeam: "Events",           department: "operations", order: 1 },
+  { _id: "team-hemonsi", _type: "teamMember", name: "Hemonsi",  role: "Sponsorships Lead",  subTeam: "Sponsorships",     department: "operations", order: 2 },
+  { _id: "team-rituka",  _type: "teamMember", name: "Rituka",   role: "Marketing Lead",     subTeam: "Marketing",        department: "operations", order: 3 },
+  { _id: "team-aliya",   _type: "teamMember", name: "Aliya",    role: "P&C Lead",           subTeam: "People & Culture", department: "operations", order: 4 },
 
-  // Projects
-  { _id: "team-pm",        _type: "teamMember", name: "Project Manager",  role: "Project Manager", department: "projects",   order: 1 },
-  { _id: "team-consult",   _type: "teamMember", name: "Consultant",       role: "Consultant",      department: "projects",   order: 2 },
+  // ── Projects ──────────────────────────────────────────────────────────────
+  { _id: "team-pranav",  _type: "teamMember", name: "Pranav",   role: "Tech Lead",      department: "projects",   order: 1 },
 ];
 
 // ── Run ───────────────────────────────────────────────────────────────────────

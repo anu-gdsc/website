@@ -22,14 +22,17 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdganu.com";
 export const metadata: Metadata = {
   title: "Register",
   description:
-    "Register for GDG ANU 2026 — a flagship student developer event at ANU Canberra, October 2026. Secure your spot for talks, workshops, and networking across AI, cloud, web, and product.",
+    "Register for GDG ANU 2026: a flagship student developer event at ANU Canberra, October 2026. Secure your spot for talks, workshops, and networking across AI, cloud, web, and product.",
   alternates: {
     canonical: `${siteUrl}/register`,
   },
   openGraph: {
+    type: "website",
+    siteName: "GDG ANU",
+    locale: "en_AU",
     title: "Register | GDG ANU 2026",
     description:
-      "Secure your spot at GDG ANU 2026 — talks, workshops, and networking across AI, cloud, web, and product. ANU Canberra, October 2026.",
+      "Secure your spot at GDG ANU 2026: talks, workshops, and networking across AI, cloud, web, and product. ANU Canberra, October 2026.",
     url: `${siteUrl}/register`,
     images: [
       {
@@ -135,7 +138,7 @@ export default function RegisterPage() {
               <SectionTitle
                 eyebrow="Registration overview"
                 title="A simple, clear path to joining the event"
-                description="Everything you need to know before signing up — event details, what to expect, and a straightforward registration process."
+                description="Everything you need to know before signing up: event details, what to expect, and a straightforward registration process."
               />
 
               <div className="mt-8 space-y-5 text-sm leading-7 text-white/70 md:text-base">
@@ -202,7 +205,7 @@ export default function RegisterPage() {
               <div className="mt-8 rounded-2xl border border-white/10 bg-black/40 p-5">
                 <p className="text-sm font-medium text-white">Registration is open</p>
                 <p className="mt-2 text-sm leading-7 text-white/65">
-                  Register via Hellorubric to secure your spot. Spots are limited — sign up early
+                  Register via Hellorubric to secure your spot. Spots are limited, sign up early
                   to avoid missing out.
                 </p>
               </div>
@@ -218,7 +221,7 @@ export default function RegisterPage() {
           <SectionTitle
             eyebrow="Why register"
             title="What attendees get from the experience"
-            description="A day designed to be genuinely useful — practical sessions, real connections, and ideas you can act on."
+            description="A day designed to be genuinely useful: practical sessions, real connections, and ideas you can act on."
           />
           </FadeIn>
 

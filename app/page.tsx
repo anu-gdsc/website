@@ -1,28 +1,38 @@
 import type { Metadata } from "next";
 import Hero from "@/components/hero/hero";
-import Stats from "@/components/sections/stats";
-import About from "@/components/sections/about";
-import Tracks from "@/components/sections/tracks";
-import Speakers from "@/components/sections/speakers";
-import Schedule from "@/components/sections/schedule";
-import Sponsors from "@/components/sections/sponsors";
-import FAQ from "@/components/sections/faq";
-import RegisterCTA from "@/components/sections/register-cta";
-import { getSpeakers, getSponsors, getScheduleItems, getFaqs, getTracks } from "@/sanity/lib/queries";
-
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdganu.com";
+import Ticker from "@/components/home/ticker";
+import Mission from "@/components/home/mission";
+import Events from "@/components/home/events";
+import Projects from "@/components/home/projects";
+import DinoPlay from "@/components/home/dino-play";
+import Community from "@/components/home/community";
+import TeamTree from "@/components/home/team-tree";
+import Join from "@/components/home/join";
+import SponsorsBand from "@/components/home/sponsors-band";
+import { getSponsors, getTeamMembers } from "@/sanity/lib/queries";
+import { fallbackTeam } from "@/data/team";
+import { SITE_URL as siteUrl, SITE_TITLE, SITE_DESCRIPTION, graph, projectsSchema, baseOpenGraph, baseTwitter } from "@/lib/seo";
 
 export const metadata: Metadata = {
+  title: { absolute: SITE_TITLE },
+  description: SITE_DESCRIPTION,
   alternates: {
     canonical: siteUrl,
   },
   openGraph: {
+    ...baseOpenGraph,
     url: siteUrl,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    ...baseTwitter,
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
   },
 };
 
 const breadcrumbSchema = {
-  "@context": "https://schema.org",
   "@type": "BreadcrumbList",
   itemListElement: [
     {
@@ -35,29 +45,24 @@ const breadcrumbSchema = {
 };
 
 export default async function Home() {
-  const [speakers, sponsors, scheduleItems, faqs, tracks] = await Promise.all([
-    getSpeakers(),
-    getSponsors(),
-    getScheduleItems(),
-    getFaqs(),
-    getTracks(),
-  ]);
+  const [team, sponsors] = await Promise.all([getTeamMembers(), getSponsors()]);
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(graph(breadcrumbSchema, projectsSchema)) }}
       />
       <Hero />
-      <Stats />
-      <About />
-      <Tracks tracks={tracks} />
-      <Speakers speakers={speakers} />
-      <Schedule items={scheduleItems} />
-      <Sponsors sponsors={sponsors} />
-      <FAQ faqs={faqs} />
-      <RegisterCTA />
+      <Ticker />
+      <Mission />
+      <Events />
+      <Projects />
+      <Community />
+      <TeamTree members={team.length ? team : fallbackTeam} />
+      <Join />
+      <SponsorsBand sponsors={sponsors} />
+      <DinoPlay />
     </>
   );
 }

@@ -1,6 +1,7 @@
-import { client } from "./client";
+import { client, hasSanity } from "./client";
 
 export async function getSpeakers() {
+  if (!hasSanity) return [];
   try {
     return await client.fetch(
       `*[_type == "speaker"] | order(order asc) {
@@ -14,6 +15,7 @@ export async function getSpeakers() {
 }
 
 export async function getSponsors() {
+  if (!hasSanity) return [];
   try {
     return await client.fetch(
       `*[_type == "sponsor"] | order(order asc) {
@@ -27,6 +29,7 @@ export async function getSponsors() {
 }
 
 export async function getScheduleItems() {
+  if (!hasSanity) return [];
   try {
     return await client.fetch(
       `*[_type == "scheduleItem"] | order(order asc) {
@@ -39,6 +42,7 @@ export async function getScheduleItems() {
 }
 
 export async function getFaqs() {
+  if (!hasSanity) return [];
   try {
     return await client.fetch(
       `*[_type == "faq"] | order(order asc) {
@@ -51,6 +55,7 @@ export async function getFaqs() {
 }
 
 export async function getTracks() {
+  if (!hasSanity) return [];
   try {
     return await client.fetch(
       `*[_type == "track"] | order(order asc) {
@@ -63,6 +68,7 @@ export async function getTracks() {
 }
 
 export async function getTeamMembers() {
+  if (!hasSanity) return [];
   try {
     return await client.fetch(
       `*[_type == "teamMember"] | order(order asc) {

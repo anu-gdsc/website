@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     canonical: `${siteUrl}/sponsors`,
   },
   openGraph: {
+    type: "website",
+    siteName: "GDG ANU",
+    locale: "en_AU",
     title: "Sponsors & Partners | GDG ANU 2026",
     description:
       "The sponsors and partners powering GDG ANU 2026. Connect with student developers and the tech community at ANU Canberra.",
@@ -34,7 +37,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Sponsors & Partners | GDG ANU 2026",
     description:
-      "Partners backing GDG ANU 2026 — connect with student developers at ANU Canberra, October 2026.",
+      "Partners backing GDG ANU 2026: connect with student developers at ANU Canberra, October 2026.",
     images: ["/og-image.png"],
   },
 };
@@ -187,7 +190,7 @@ export default function SponsorsPage() {
       <PageHero
         eyebrow="Sponsors & Partners"
         title="Backed by institutions, communities, and ecosystem partners."
-        description="The organisations, institutions, and communities backing GDG ANU 2026 — helping create a student event that's practical, high-quality, and built to last."
+        description="The organisations, institutions, and communities backing GDG ANU 2026, helping create a student event that's practical, high-quality, and built to last."
       />
 
       <section className="border-b border-white/10 bg-black py-20 md:py-28">
@@ -284,7 +287,7 @@ export default function SponsorsPage() {
           <SectionTitle
             eyebrow="Sponsorship tiers"
             title="A flexible structure for different kinds of support"
-            description="Three partnership tiers designed for different levels of involvement — from title visibility to community and ecosystem support."
+            description="Three partnership tiers designed for different levels of involvement, from title visibility to community and ecosystem support."
           />
           </FadeIn>
 

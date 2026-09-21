@@ -7,11 +7,14 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdganu.com";
 export const metadata: Metadata = {
   title: "Schedule",
   description:
-    "Explore the GDG ANU 2026 event schedule — keynotes, talks, hands-on workshops, networking, and community sessions across a full day at ANU Canberra, October 2026.",
+    "Explore the GDG ANU 2026 event schedule: keynotes, talks, hands-on workshops, networking, and community sessions across a full day at ANU Canberra, October 2026.",
   alternates: {
     canonical: `${siteUrl}/schedule`,
   },
   openGraph: {
+    type: "website",
+    siteName: "GDG ANU",
+    locale: "en_AU",
     title: "Schedule | GDG ANU 2026",
     description:
       "A full day of keynotes, talks, workshops, and community moments at GDG ANU 2026, ANU Canberra, October 2026.",
@@ -29,7 +32,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Schedule | GDG ANU 2026",
     description:
-      "GDG ANU 2026 event schedule — keynotes, workshops, networking, and community sessions at ANU Canberra.",
+      "GDG ANU 2026 event schedule: keynotes, workshops, networking, and community sessions at ANU Canberra.",
     images: ["/og-image.png"],
   },
 };

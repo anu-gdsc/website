@@ -1,28 +1,29 @@
 import type { Metadata } from "next";
-import { Space_Grotesk, Inter } from "next/font/google";
+import { Google_Sans, Google_Sans_Code } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/layout/navbar";
 import Footer from "@/components/layout/footer";
 import { ThemeProvider } from "@/components/providers/theme-provider";
+import { SITE_URL as siteUrl, SITE_TITLE as title, SITE_DESCRIPTION as description, SITE_NAME, graph, organizationSchema, websiteSchema, personSchema } from "@/lib/seo";
+import ClickBurst from "@/components/fx/click-burst";
+import ScrollProgress from "@/components/fx/scroll-progress";
+import RoamingDino from "@/components/fx/roaming-dino";
+import CommandPalette from "@/components/fx/command-palette";
 
-const spaceGrotesk = Space_Grotesk({
+const googleSans = Google_Sans({
   subsets: ["latin"],
-  variable: "--font-space",
-  display: "swap",
-  weight: ["300", "400", "500", "600", "700"],
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-inter",
+  variable: "--font-google",
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdganu.com";
+const googleSansCode = Google_Sans_Code({
+  subsets: ["latin"],
+  variable: "--font-google-code",
+  display: "swap",
+  weight: ["400", "500", "600"],
+});
 
-const title = "GDG ANU — Build, Learn & Connect | October 2026, Canberra";
-const description =
-  "Join Google Developer Group ANU for a flagship developer event in Canberra. Talks, workshops, networking and hands-on sessions across AI, cloud, web and product innovation. ANU Campus, October 2026.";
+
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -39,23 +40,29 @@ export const metadata: Metadata = {
   },
   keywords: [
     "GDG ANU",
+    "GDG on Campus ANU",
     "Google Developer Group ANU",
-    "developer event Canberra 2026",
-    "GDG ANU",
-    "Australian National University tech event",
-    "DevFest Canberra",
-    "AI workshop Canberra",
-    "cloud computing ANU",
-    "web development students",
-    "tech conference Australia 2026",
-    "student developers Canberra",
+    "Google Developer Group Australian National University",
+    "GDSC ANU",
+    "ANU tech club",
+    "ANU coding club",
+    "ANU student projects",
+    "Canberra developer community",
+    "AskANU",
+    "ANU Info",
+    "Access ANU",
+    "Sign Sense",
+    "Saheb Yuvraj Singh",
+    "Yuvraj GDG ANU",
+    "GDG ANU president",
     "Google developers Australia",
-    "software engineering ANU",
-    "product innovation workshop",
-    "GDG event 2026",
+    "student developers Canberra",
+    "tech talks ANU",
+    "AI workshop Canberra",
   ],
-  authors: [{ name: "GDG ANU", url: siteUrl }],
+  authors: [{ name: "GDG ANU", url: siteUrl }, { name: "Saheb Yuvraj Singh", url: `${siteUrl}/team/saheb-yuvraj-singh` }],
   creator: "GDG ANU",
+  applicationName: SITE_NAME,
   publisher: "Google Developer Group ANU",
   category: "technology",
 
@@ -71,7 +78,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "GDG ANU — Developer Event, October 2026, ANU Canberra",
+        alt: "GDG ANU Developer Event, October 2026, ANU Canberra",
         type: "image/png",
       },
     ],
@@ -101,35 +108,14 @@ export const metadata: Metadata = {
   alternates: {
     canonical: siteUrl,
   },
-};
 
-const organizationSchema = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Google Developer Group ANU",
-  alternateName: "GDG ANU",
-  url: siteUrl,
-  logo: `${siteUrl}/og-image.png`,
-  sameAs: [
-    "https://www.instagram.com/gdg_anu/",
-    "https://gdg.community.dev/gdg-on-campus-the-australian-national-university-canberra-australia/",
-  ],
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Canberra",
-    addressRegion: "ACT",
-    postalCode: "2601",
-    addressCountry: "AU",
-  },
-  parentOrganization: {
-    "@type": "Organization",
-    name: "Google Developer Groups",
-    url: "https://developers.google.com/community/gdg",
-  },
+  // Paste the Google Search Console HTML-tag token into NEXT_PUBLIC_GSC_VERIFICATION (Vercel env var).
+  verification: process.env.NEXT_PUBLIC_GSC_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION }
+    : undefined,
 };
 
 const eventSchema = {
-  "@context": "https://schema.org",
   "@type": "Event",
   name: "GDG ANU Developer Event 2026",
   description,
@@ -151,11 +137,7 @@ const eventSchema = {
       addressCountry: "AU",
     },
   },
-  organizer: {
-    "@type": "Organization",
-    name: "Google Developer Group ANU",
-    url: siteUrl,
-  },
+  organizer: { "@id": `${siteUrl}/#organization` },
   offers: {
     "@type": "Offer",
     name: "General Registration",
@@ -183,18 +165,22 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en-AU" suppressHydrationWarning className={`${spaceGrotesk.variable} ${inter.variable}`}>
-      <body className="bg-black text-white antialiased">
+    <html lang="en-AU" suppressHydrationWarning className={`${googleSans.variable} ${googleSansCode.variable}`}>
+      <body className="bg-ink text-white antialiased">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{
-            __html: JSON.stringify([organizationSchema, eventSchema]),
+            __html: JSON.stringify(graph(organizationSchema, websiteSchema, personSchema, eventSchema)),
           }}
         />
         <ThemeProvider>
+          <ScrollProgress />
           <Navbar />
-          <main className="pt-20">{children}</main>
+          <main>{children}</main>
           <Footer />
+          <RoamingDino />
+          <CommandPalette />
+          <ClickBurst />
         </ThemeProvider>
       </body>
     </html>

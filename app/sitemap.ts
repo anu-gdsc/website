@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdganu.com";
+import { SITE_URL as siteUrl } from "@/lib/seo";
+import { PRESIDENT_PATH } from "@/data/person";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
@@ -9,6 +10,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
       lastModified: new Date(),
       changeFrequency: "weekly",
       priority: 1,
+    },
+    {
+      url: `${siteUrl}${PRESIDENT_PATH}`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
     },
     {
       url: `${siteUrl}/about`,

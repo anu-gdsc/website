@@ -6,7 +6,8 @@ import Container from "@/components/ui/container";
 import PageHero from "@/components/layout/page-hero";
 import { FadeIn } from "@/components/motion/fade-in";
 import { StaggerContainer, StaggerItem } from "@/components/motion/stagger";
-import Team from "@/components/sections/team";
+import TeamTree from "@/components/home/team-tree";
+import { fallbackTeam } from "@/data/team";
 import { getTeamMembers } from "@/sanity/lib/queries";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdganu.com";
@@ -14,9 +15,12 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdganu.com";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn about GDG ANU 2026 — a student-led developer event at the Australian National University.",
+    "Learn about GDG ANU 2026: a student-led developer event at the Australian National University.",
   alternates: { canonical: `${siteUrl}/about` },
   openGraph: {
+    type: "website",
+    siteName: "GDG ANU",
+    locale: "en_AU",
     title: "About | GDG ANU 2026",
     description: "A student-led developer event at ANU Canberra, October 2026.",
     url: `${siteUrl}/about`,
@@ -54,7 +58,7 @@ export default async function AboutPage() {
       <PageHero
         eyebrow="About"
         title="A student-led dev event built for builders."
-        description="GDG ANU brings together students, developers, and designers for a day of talks, workshops, and real community — all on campus."
+        description="GDG ANU brings together students, developers, and designers for a day of talks, workshops, and real community, all on campus."
       />
 
       {/* ── Snapshot + Pillars ────────────────────────────── */}
@@ -103,7 +107,7 @@ export default async function AboutPage() {
       </section>
 
       {/* ── Team ──────────────────────────────────────────── */}
-      <Team members={members} />
+      <TeamTree members={members.length ? members : fallbackTeam} />
 
       {/* ── CTA ───────────────────────────────────────────── */}
       <section className="bg-black py-16 md:py-20">

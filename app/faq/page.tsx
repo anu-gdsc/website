@@ -15,14 +15,17 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdganu.com";
 export const metadata: Metadata = {
   title: "FAQ",
   description:
-    "Answers to common questions about GDG ANU 2026 — registration, attendance, what to expect, logistics, and more. ANU Canberra, October 2026.",
+    "Answers to common questions about GDG ANU 2026, registration, attendance, what to expect, logistics, and more. ANU Canberra, October 2026.",
   alternates: {
     canonical: `${siteUrl}/faq`,
   },
   openGraph: {
+    type: "website",
+    siteName: "GDG ANU",
+    locale: "en_AU",
     title: "FAQ | GDG ANU 2026",
     description:
-      "Everything you need to know before attending GDG ANU 2026 — registration, schedule, logistics, and more.",
+      "Everything you need to know before attending GDG ANU 2026, registration, schedule, logistics, and more.",
     url: `${siteUrl}/faq`,
     images: [
       {
@@ -37,7 +40,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "FAQ | GDG ANU 2026",
     description:
-      "Common questions about GDG ANU 2026 — registration, schedule, logistics, and more.",
+      "Common questions about GDG ANU 2026: registration, schedule, logistics, and more.",
     images: ["/og-image.png"],
   },
 };
@@ -49,7 +52,7 @@ export default async function FAQPage() {
       <PageHero
         eyebrow="FAQ"
         title="Questions, answered before the event day."
-        description="Everything attendees usually want to know before registering or showing up — from logistics and registration to what the day will actually look like."
+        description="Everything attendees usually want to know before registering or showing up, from logistics and registration to what the day will actually look like."
       />
 
       <section className="border-b border-white/10 bg-black py-20 md:py-28">

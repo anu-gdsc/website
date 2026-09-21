@@ -35,7 +35,7 @@ export const teamMember = defineType({
       name: "subTeam",
       title: "Sub-team",
       type: "string",
-      description: "Optional — e.g. Events, Marketing, P&C, Sponsorships. Shown as a badge on the card.",
+      description: "Optional: e.g. Events, Marketing, P&C, Sponsorships. Shown as a badge on the card.",
     }),
     defineField({
       name: "image",
@@ -47,13 +47,13 @@ export const teamMember = defineType({
       name: "github",
       title: "GitHub URL",
       type: "url",
-      description: "Optional — leave blank to hide the icon",
+      description: "Optional: leave blank to hide the icon",
     }),
     defineField({
       name: "linkedin",
       title: "LinkedIn URL",
       type: "url",
-      description: "Optional — leave blank to hide the icon",
+      description: "Optional: leave blank to hide the icon",
     }),
     defineField({
       name: "order",

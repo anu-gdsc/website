@@ -21,14 +21,17 @@ const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://gdganu.com";
 export const metadata: Metadata = {
   title: "Speakers",
   description:
-    "Meet the speakers at GDG ANU 2026. Industry leaders from Google, Red Hat, and AWS covering AI, multiagent systems, cloud engineering, career development, and open source — at ANU Canberra, October 2026.",
+    "Meet the speakers at GDG ANU 2026. Industry leaders from Google, Red Hat, and AWS covering AI, multiagent systems, cloud engineering, career development, and open source, at ANU Canberra, October 2026.",
   alternates: {
     canonical: `${siteUrl}/speakers`,
   },
   openGraph: {
+    type: "website",
+    siteName: "GDG ANU",
+    locale: "en_AU",
     title: "Speakers | GDG ANU 2026",
     description:
-      "Harshil Siyani, Anupam Phogat, Dave Hall, Paul Wayper and more — industry voices covering AI, cloud, open source and career growth at GDG ANU, October 2026.",
+      "Harshil Siyani, Anupam Phogat, Dave Hall, Paul Wayper and more, industry voices covering AI, cloud, open source and career growth at GDG ANU, October 2026.",
     url: `${siteUrl}/speakers`,
     images: [
       {
@@ -43,7 +46,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Speakers | GDG ANU 2026",
     description:
-      "Meet the speakers at GDG ANU — AI, cloud, open source, and career sessions at ANU Canberra, October 2026.",
+      "Meet the speakers at GDG ANU: AI, cloud, open source, and career sessions at ANU Canberra, October 2026.",
     images: ["/og-image.png"],
   },
 };
@@ -106,7 +109,7 @@ export default async function SpeakersPage() {
       <PageHero
         eyebrow="Speakers"
         title="The people shaping GDG ANU 2026."
-        description="Engineers, architects, and practitioners from Google, Red Hat, and the AWS community — covering AI, cloud, open source, and the real skills that matter after graduation."
+        description="Engineers, architects, and practitioners from Google, Red Hat, and the AWS community, covering AI, cloud, open source, and the real skills that matter after graduation."
       />
 
       {/* Speaker cards */}
@@ -123,7 +126,7 @@ export default async function SpeakersPage() {
                   {/* Photo */}
                   <div className="shrink-0">
                     {speaker.image ? (
-                      <Image src={speaker.image} alt={`${speaker.name} — ${speaker.role} at ${speaker.company}`} width={176} height={224} className="h-56 w-full rounded-2xl object-cover md:h-full md:w-44" />
+                      <Image src={speaker.image} alt={`${speaker.name}, ${speaker.role} at ${speaker.company}`} width={176} height={224} className="h-56 w-full rounded-2xl object-cover md:h-full md:w-44" />
                     ) : (
                       <div className="flex h-56 w-full items-center justify-center rounded-2xl md:h-full md:w-44" style={{ background: "rgba(255,255,255,0.05)" }}>
                         <span className="text-3xl font-bold text-white/40">{speaker.name.split(" ").map((n: string) => n[0]).join("")}</span>

@@ -13,8 +13,8 @@ export type Project = {
 };
 
 // The club's three current projects.
-// TODO(content): confirm the one-line descriptions for Access ANU and Sign Sense (written from the names),
-// and add screenshots + links for them in /public/projects when ready.
+// TODO(content): confirm the one-line description for Access ANU (written from the name),
+// and add a screenshot in /public/projects when ready.
 export const projects: Project[] = [
   {
     name: "Access ANU",
@@ -36,10 +36,12 @@ export const projects: Project[] = [
   },
   {
     name: "Sign Sense",
-    blurb: "Technology that helps people understand and learn sign language.",
+    blurb: "Learn and practise sign language with a guided, interactive exercise map.",
     tags: [],
-    status: "In progress",
+    status: "Live",
     color: "#34A853",
     art: "vision",
+    image: "/projects/signsense.png",
+    href: "https://gdgsignsense.netlify.app/exercise_map",
   },
 ];

@@ -22,6 +22,4 @@ export const fallbackTeam: TeamMember[] = [
   { name: "Hemonsi", role: "Sponsorships Lead", department: "operations", subTeam: "Sponsorships" },
   { name: "Rituka",  role: "Marketing Lead",    department: "operations", subTeam: "Marketing" },
   { name: "Aliya",   role: "P&C Lead",          department: "operations", subTeam: "People & Culture" },
-
-  { name: "Pranav",  role: "Tech Lead",         department: "projects",   subTeam: "Tech" },
 ];

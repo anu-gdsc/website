@@ -337,9 +337,6 @@ const teamMembers = [
   { _id: "team-hemonsi", _type: "teamMember", name: "Hemonsi",  role: "Sponsorships Lead",  subTeam: "Sponsorships",     department: "operations", order: 2 },
   { _id: "team-rituka",  _type: "teamMember", name: "Rituka",   role: "Marketing Lead",     subTeam: "Marketing",        department: "operations", order: 3 },
   { _id: "team-aliya",   _type: "teamMember", name: "Aliya",    role: "P&C Lead",           subTeam: "People & Culture", department: "operations", order: 4 },
-
-  // ── Projects ──────────────────────────────────────────────────────────────
-  { _id: "team-pranav",  _type: "teamMember", name: "Pranav",   role: "Tech Lead",      department: "projects",   order: 1 },
 ];
 
 // ── Run ───────────────────────────────────────────────────────────────────────
